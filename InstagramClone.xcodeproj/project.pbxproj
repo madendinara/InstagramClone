@@ -17,6 +17,7 @@
 		9C24DC1027459082001A6F97 /* InstagramCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24DC0F27459082001A6F97 /* InstagramCloneTests.swift */; };
 		9C24DC1A27459082001A6F97 /* InstagramCloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24DC1927459082001A6F97 /* InstagramCloneUITests.swift */; };
 		9C24DC1C27459082001A6F97 /* InstagramCloneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24DC1B27459082001A6F97 /* InstagramCloneUITestsLaunchTests.swift */; };
+		9C24DC2F27459646001A6F97 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24DC2E27459646001A6F97 /* MainTabController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		9C24DC1527459082001A6F97 /* InstagramCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C24DC1927459082001A6F97 /* InstagramCloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCloneUITests.swift; sourceTree = "<group>"; };
 		9C24DC1B27459082001A6F97 /* InstagramCloneUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramCloneUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9C24DC2E27459646001A6F97 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		9C24DC2927459383001A6F97 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C24DC2E27459646001A6F97 /* MainTabController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			files = (
 				9C24DBFA27459081001A6F97 /* ViewController.swift in Sources */,
 				9C24DBF627459081001A6F97 /* AppDelegate.swift in Sources */,
+				9C24DC2F27459646001A6F97 /* MainTabController.swift in Sources */,
 				9C24DC0027459081001A6F97 /* InstagramClone.xcdatamodeld in Sources */,
 				9C24DBF827459081001A6F97 /* SceneDelegate.swift in Sources */,
 			);
