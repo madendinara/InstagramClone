@@ -21,9 +21,10 @@ class MainTabController: UITabBarController {
     // MARK: - Methods
     
     func configureViewControllers() {
-        view.backgroundColor = .black
+        view.backgroundColor = .white
 
-        let feed = templateNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "home_unselected"), selectedImage: UIImage(imageLiteralResourceName: "home_selected"), rootViewController: FeedController())
+        let layout = UICollectionViewFlowLayout()
+        let feed = templateNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "home_unselected"), selectedImage: UIImage(imageLiteralResourceName: "home_selected"), rootViewController: FeedController(collectionViewLayout: layout))
         let search = templateNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "search_unselected"), selectedImage: UIImage(imageLiteralResourceName: "search_selected"), rootViewController: SearchController())
         let imageSelect = templateNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "plus_unselected"), selectedImage: UIImage(imageLiteralResourceName: "plus_unselected"), rootViewController: ImageSelectorController())
         let notification = templateNavigationController(unselectedImage: UIImage(imageLiteralResourceName: "like_unselected"), selectedImage: UIImage(imageLiteralResourceName: "like_selected"), rootViewController: NotificationController())
@@ -31,6 +32,7 @@ class MainTabController: UITabBarController {
         
         viewControllers = [feed, search, imageSelect, notification, profile]
         tabBar.tintColor = .black
+        tabBar.isTranslucent = false
     }
     
     func templateNavigationController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController) -> UINavigationController {
