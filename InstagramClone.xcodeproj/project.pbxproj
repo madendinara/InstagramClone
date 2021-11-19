@@ -28,6 +28,8 @@
 		9C24DC3D2745BF4A001A6F97 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24DC3C2745BF4A001A6F97 /* FeedCell.swift */; };
 		9C24DC402745C0A3001A6F97 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C24DC3F2745C0A3001A6F97 /* Extensions.swift */; };
 		9C24DC432745C0FD001A6F97 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 9C24DC422745C0FD001A6F97 /* Algorithms */; };
+		9CABEF0627484C010022169D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0527484C010022169D /* LoginController.swift */; };
+		9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0727484C0E0022169D /* RegistrationController.swift */; };
 		F561AEBB6C09E7014A7EB818 /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF417A8B1F60C6793BFD7B /* Pods_InstagramClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		9C24DC3A27459ED4001A6F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
 		9C24DC3C2745BF4A001A6F97 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		9C24DC3F2745C0A3001A6F97 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../../../Downloads/Extensions.swift; sourceTree = "<group>"; };
+		9CABEF0527484C010022169D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		9CABEF0727484C0E0022169D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		CAC97696633BE0E9F475CF45 /* Pods-InstagramClone-InstagramCloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone-InstagramCloneUITests.release.xcconfig"; path = "Target Support Files/Pods-InstagramClone-InstagramCloneUITests/Pods-InstagramClone-InstagramCloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +185,7 @@
 		9C24DC2927459383001A6F97 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9CABEF0927484C270022169D /* Auth */,
 				9C24DC2E27459646001A6F97 /* MainTabController.swift */,
 				9C24DC3027459975001A6F97 /* FeedController.swift */,
 				9C24DC3227459980001A6F97 /* SearchController.swift */,
@@ -229,6 +234,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		9CABEF0927484C270022169D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9CABEF0527484C010022169D /* LoginController.swift */,
+				9CABEF0727484C0E0022169D /* RegistrationController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		DC4D462A2872154BA47FD167 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,7 +263,6 @@
 				4F77461A41FC31CA238339E7 /* Pods-InstagramCloneTests.debug.xcconfig */,
 				30E5C63D877F6B866ECF02C1 /* Pods-InstagramCloneTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -350,7 +363,7 @@
 			);
 			mainGroup = 9C24DBE927459081001A6F97;
 			packageReferences = (
-				9C24DC412745C0FD001A6F97 /* XCRemoteSwiftPackageReference "swift-algorithms.git" */,
+				9C24DC412745C0FD001A6F97 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = 9C24DBF327459081001A6F97 /* Products */;
 			projectDirPath = "";
@@ -501,11 +514,13 @@
 				9C24DC352745998C001A6F97 /* ImageSelectorController.swift in Sources */,
 				9C24DBFA27459081001A6F97 /* ViewController.swift in Sources */,
 				9C24DC3127459975001A6F97 /* FeedController.swift in Sources */,
+				9CABEF0627484C010022169D /* LoginController.swift in Sources */,
 				9C24DBF627459081001A6F97 /* AppDelegate.swift in Sources */,
 				9C24DC3D2745BF4A001A6F97 /* FeedCell.swift in Sources */,
 				9C24DC3327459980001A6F97 /* SearchController.swift in Sources */,
 				9C24DC392745999D001A6F97 /* ProfileController.swift in Sources */,
 				9C24DC402745C0A3001A6F97 /* Extensions.swift in Sources */,
+				9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */,
 				9C24DC2F27459646001A6F97 /* MainTabController.swift in Sources */,
 				9C24DC3727459996001A6F97 /* NotificationController.swift in Sources */,
 				9C24DC0027459081001A6F97 /* InstagramClone.xcdatamodeld in Sources */,
@@ -881,7 +896,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9C24DC412745C0FD001A6F97 /* XCRemoteSwiftPackageReference "swift-algorithms.git" */ = {
+		9C24DC412745C0FD001A6F97 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
 			requirement = {
@@ -894,7 +909,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		9C24DC422745C0FD001A6F97 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9C24DC412745C0FD001A6F97 /* XCRemoteSwiftPackageReference "swift-algorithms.git" */;
+			package = 9C24DC412745C0FD001A6F97 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
 		};
 /* End XCSwiftPackageProductDependency section */

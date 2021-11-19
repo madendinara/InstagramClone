@@ -79,6 +79,13 @@ class FeedCell: UICollectionViewCell {
         label.textColor = .systemGray
         return label
     }()
+    private lazy var buttonsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, shareButton])
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -97,7 +104,7 @@ class FeedCell: UICollectionViewCell {
     }
     
     func configureCell(){
-        [profileImageView, usernameButton, postImage, likeButton, commentButton, shareButton, saveButton, likeLabel, captionLabel, postTimeLabel].forEach {
+        [profileImageView, usernameButton, postImage, buttonsStackView, saveButton, likeLabel, captionLabel, postTimeLabel].forEach {
             addSubview($0)
         }
         addSubview(profileImageView)
@@ -120,20 +127,12 @@ class FeedCell: UICollectionViewCell {
             make.width.equalToSuperview()
             make.height.equalTo(400)
         }
-        likeButton.snp.makeConstraints { make in
+        buttonsStackView.snp.makeConstraints { make in
             make.top.equalTo(postImage.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(8)
         }
-        commentButton.snp.makeConstraints { make in
-            make.leading.equalTo(likeButton.snp.trailing).offset(8)
-            make.centerY.equalTo(likeButton)
-        }
-        shareButton.snp.makeConstraints { make in
-            make.leading.equalTo(commentButton.snp.trailing).offset(8)
-            make.centerY.equalTo(commentButton)
-        }
         likeLabel.snp.makeConstraints { make in
-            make.top.equalTo(likeButton.snp.bottom).offset(8)
+            make.top.equalTo(buttonsStackView.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(8)
         }
         saveButton.snp.makeConstraints { make in
