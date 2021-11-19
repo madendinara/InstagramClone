@@ -17,27 +17,13 @@ class LoginController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    private lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .none
-        textField.textColor = .white
+    private lazy var emailTextField: AuthTextField = {
+        let textField = AuthTextField(placeholder: "Email")
         textField.keyboardType = .emailAddress
-        textField.keyboardAppearance = .dark
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        textField.setHeight(50)
-        textField.attributedPlaceholder =  NSAttributedString(string: "Email", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
         return textField
     }()
-    private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.borderStyle = .none
-        textField.textColor = .white
-        textField.keyboardType = .emailAddress
-        textField.keyboardAppearance = .dark
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        textField.setHeight(50)
-        textField.isSecureTextEntry = true
-        textField.attributedPlaceholder =  NSAttributedString(string: "Password", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+    private lazy var passwordTextField: AuthTextField = {
+        let textField = AuthTextField(placeholder: "Password")
         return textField
     }()
     private lazy var loginButton: UIButton = {
@@ -51,30 +37,12 @@ class LoginController: UIViewController {
         button.isUserInteractionEnabled = true
         return button
     }()
-    private lazy var forgetPasswordButton: UIButton = {
-        let button = UIButton()
-        button.isUserInteractionEnabled = true
-        
-        let atts: [NSAttributedString.Key:Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-        let attributedTitle = NSMutableAttributedString(string: "Forgot your password  ", attributes: atts)
-        
-        let attsBold: [NSAttributedString.Key:Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-        attributedTitle.append(NSAttributedString(string: "Get help signing in", attributes: attsBold))
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
+    private lazy var forgetPasswordButton: AuthButton = {
+        let button = AuthButton(regularText: "Forgot your password?  ", boldText: "Get help signing in")
         return button
     }()
-    private lazy var dontHaveAccountButton: UIButton = {
-        let button = UIButton()
-        button.isUserInteractionEnabled = true
-
-        let atts: [NSAttributedString.Key:Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ", attributes: atts)
-        
-        let attsBold: [NSAttributedString.Key:Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-        attributedTitle.append(NSAttributedString(string: "Sign up", attributes: attsBold))
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
+    private lazy var dontHaveAccountButton: AuthButton = {
+        let button = AuthButton(regularText: "Don't have an account?  ", boldText: "Sign up")
         return button
     }()
     private lazy var inputStackView: UIStackView = {
