@@ -9,6 +9,8 @@ import UIKit
 
 class LoginController: UIViewController {
     
+    // MARK: - Internal properties
+    private var viewModel = LoginViewModel()
     
     // MARK: - Properties
     private lazy var iconImage: UIImageView = {
@@ -29,9 +31,12 @@ class LoginController: UIViewController {
     }()
     private lazy var loginButton: UIButton = {
         let button = UIButton()
+        button.addTarget(self, action: #selector(didTappedLoginButton), for: .touchUpInside)
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemPurple
+        button.isEnabled = false
+        button.alpha = 0.5
         button.layer.cornerRadius = 5
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -74,6 +79,7 @@ class LoginController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
         
         configureGradienLayer()
+        configureNotification()
         
         [iconImage, inputStackView, dontHaveAccountButton].forEach { view.addSubview($0) }
         makeConstraints()
@@ -95,5 +101,33 @@ class LoginController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
+    
+    func configureNotification() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    @objc func textDidChange(_ sender: UITextField) {
+        if (sender == emailTextField) {
+            viewModel.email = sender.text
+        }
+        else if(sender == passwordTextField) {
+            viewModel.password = sender.text
+        }
+        updateForm()
+    }
+    
+    @objc func didTappedLoginButton(){
+        print(viewModel.email)
+        print(viewModel.password)
+    }
+}
+
+extension LoginController: FormViewModelProtocol {
+    func updateForm() {
+        loginButton.isEnabled = true
+        loginButton.alpha = viewModel.buttonBackgroundAlpha
+    }
+    
 }
 

@@ -32,6 +32,7 @@
 		9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0727484C0E0022169D /* RegistrationController.swift */; };
 		9CABEF0B274866680022169D /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0A274866680022169D /* AuthTextField.swift */; };
 		9CABEF0D27486D040022169D /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0C27486D040022169D /* AuthButton.swift */; };
+		9CABEF0F274971340022169D /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0E274971340022169D /* AuthViewModel.swift */; };
 		F561AEBB6C09E7014A7EB818 /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF417A8B1F60C6793BFD7B /* Pods_InstagramClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		9CABEF0727484C0E0022169D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		9CABEF0A274866680022169D /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		9CABEF0C27486D040022169D /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		9CABEF0E274971340022169D /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CAC97696633BE0E9F475CF45 /* Pods-InstagramClone-InstagramCloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone-InstagramCloneUITests.release.xcconfig"; path = "Target Support Files/Pods-InstagramClone-InstagramCloneUITests/Pods-InstagramClone-InstagramCloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,7 @@
 		9C24DC2A27459386001A6F97 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9CABEF0E274971340022169D /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				9C24DBF627459081001A6F97 /* AppDelegate.swift in Sources */,
 				9C24DC3D2745BF4A001A6F97 /* FeedCell.swift in Sources */,
 				9CABEF0B274866680022169D /* AuthTextField.swift in Sources */,
+				9CABEF0F274971340022169D /* AuthViewModel.swift in Sources */,
 				9C24DC3327459980001A6F97 /* SearchController.swift in Sources */,
 				9C24DC392745999D001A6F97 /* ProfileController.swift in Sources */,
 				9CABEF0D27486D040022169D /* AuthButton.swift in Sources */,
