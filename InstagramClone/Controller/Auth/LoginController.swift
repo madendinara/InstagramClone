@@ -24,6 +24,7 @@ class LoginController: UIViewController {
     }()
     private lazy var passwordTextField: AuthTextField = {
         let textField = AuthTextField(placeholder: "Password")
+        textField.isSecureTextEntry = true
         return textField
     }()
     private lazy var loginButton: UIButton = {
@@ -43,6 +44,7 @@ class LoginController: UIViewController {
     }()
     private lazy var dontHaveAccountButton: AuthButton = {
         let button = AuthButton(regularText: "Don't have an account?  ", boldText: "Sign up")
+        button.addTarget(self, action: #selector(showSignup), for: .touchUpInside)
         return button
     }()
     private lazy var inputStackView: UIStackView = {
@@ -61,16 +63,17 @@ class LoginController: UIViewController {
     }
     
     // MARK: - Methods
+    @objc func showSignup(){
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     func configureViews() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
         
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor , UIColor.systemBlue.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
+        configureGradienLayer()
         
         [iconImage, inputStackView, dontHaveAccountButton].forEach { view.addSubview($0) }
         makeConstraints()
