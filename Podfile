@@ -3,7 +3,12 @@
 
 target 'InstagramClone' do
   # Comment the next line if you don't want to use dynamic frameworks
-  pod 'SnapKit'
+  	pod 'SnapKit'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Firestore'
+	pod 'Firebase/Analytics'
+
+  
 
   use_frameworks!
 
