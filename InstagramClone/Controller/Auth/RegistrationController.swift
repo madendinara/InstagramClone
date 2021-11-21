@@ -16,6 +16,7 @@ class RegistrationController: UIViewController {
     private lazy var photoPlusButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
+        button.addTarget(self, action: #selector(didTappedPhotoPlus), for: .touchUpInside)
         button.tintColor = .white
         return button
     }()
@@ -125,6 +126,14 @@ class RegistrationController: UIViewController {
         print(viewModel.fullname)
         print(viewModel.username)
     }
+    
+    @objc func didTappedPhotoPlus(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        present(picker, animated: true, completion: nil)
+    }
 }
 
 extension RegistrationController: FormViewModelProtocol {
@@ -132,5 +141,18 @@ extension RegistrationController: FormViewModelProtocol {
         signupButton.isEnabled = true
         signupButton.alpha = viewModel.buttonBackgroundAlpha
         
+    }
+}
+
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        
+        photoPlusButton.layer.cornerRadius = photoPlusButton.frame.width / 2
+        photoPlusButton.layer.masksToBounds = true
+        photoPlusButton.layer.borderColor = UIColor.white.cgColor
+        photoPlusButton.layer.borderWidth = 1
+        photoPlusButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        self.dismiss(animated: true, completion: nil)
     }
 }
