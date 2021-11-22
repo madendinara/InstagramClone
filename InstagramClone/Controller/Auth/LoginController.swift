@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
     
@@ -118,8 +119,21 @@ class LoginController: UIViewController {
     }
     
     @objc func didTappedLoginButton(){
-        print(viewModel.email)
-        print(viewModel.password)
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        AuthService.loginUser(email: email, password: password) { result, error in
+            if let error = error {
+                
+                let alert = UIAlertController(title: "Error", message: "There is no user record.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                
+                print("Error of login is \(error.localizedDescription)")
+                
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

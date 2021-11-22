@@ -18,6 +18,10 @@ struct AuthDetails {
 }
 
 struct AuthService {
+    static func loginUser(email: String, password: String, completion: AuthDataResultCallback?) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
     static func registerUser(authDetails: AuthDetails, completion: @escaping(Error?) -> Void) {
         
         ImageUploader.uploadImage(image: authDetails.profileImage) { imageUrl in

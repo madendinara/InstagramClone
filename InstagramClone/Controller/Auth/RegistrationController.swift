@@ -138,7 +138,7 @@ class RegistrationController: UIViewController {
                 print("error is \(error.localizedDescription)")
                 return
             }
-            print("Success")
+            self.dismiss(animated: true, completion: nil)
         }
         
     }
