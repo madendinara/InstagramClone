@@ -11,6 +11,7 @@ class RegistrationController: UIViewController {
     
     // MARK: - Internal properties
     private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
 
     // MARK: - Properties
     private lazy var photoPlusButton: UIButton = {
@@ -121,10 +122,25 @@ class RegistrationController: UIViewController {
     }
     
     @objc func didTappedSignupButton(){
-        print(viewModel.email)
-        print(viewModel.password)
-        print(viewModel.fullname)
-        print(viewModel.username)
+        // safe unwrapping - guard
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullNameTextField.text else { return }
+        guard let username = usernameTextField.text?.lowercased() else { return }
+        guard let profileImage = self.profileImage else { return }
+        
+        let authDetails = AuthDetails(email: email, password: password,
+                                      fullname: fullname, username: username,
+                                      profileImage: profileImage)
+        
+        AuthService.registerUser(authDetails: authDetails) { error in
+            if let error = error {
+                print("error is \(error.localizedDescription)")
+                return
+            }
+            print("Success")
+        }
+        
     }
     
     @objc func didTappedPhotoPlus(){
@@ -144,9 +160,13 @@ extension RegistrationController: FormViewModelProtocol {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        
+        profileImage = selectedImage
         
         photoPlusButton.layer.cornerRadius = photoPlusButton.frame.width / 2
         photoPlusButton.layer.masksToBounds = true
