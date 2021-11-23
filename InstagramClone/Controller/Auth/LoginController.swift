@@ -8,10 +8,15 @@
 import UIKit
 import Firebase
 
+protocol LoginControllerDelegate: class {
+    func authDidComplete()
+}
+
 class LoginController: UIViewController {
     
     // MARK: - Internal properties
     private var viewModel = LoginViewModel()
+    weak var delegate: LoginControllerDelegate?
     
     // MARK: - Properties
     private lazy var iconImage: UIImageView = {
@@ -71,6 +76,7 @@ class LoginController: UIViewController {
     // MARK: - Methods
     @objc func showSignup(){
         let controller = RegistrationController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -132,7 +138,7 @@ class LoginController: UIViewController {
                 
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authDidComplete()
         }
     }
 }

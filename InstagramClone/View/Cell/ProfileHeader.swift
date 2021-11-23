@@ -137,7 +137,7 @@ class ProfileHeader: UICollectionReusableView {
         }
         profileEditButton.snp.makeConstraints { make in
             make.top.equalTo(profileNameLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(24)
+            make.leading.trailing.equalToSuperview().inset(8)
         }
         labelsStackView.snp.makeConstraints { make in
             make.leading.equalTo(profileImageView.snp.trailing).offset(12)
