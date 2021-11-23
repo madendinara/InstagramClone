@@ -37,6 +37,15 @@
 		9C7346E8274C342300818E5B /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346E7274C342300818E5B /* ProfileHeader.swift */; };
 		9C7346E9274C342300818E5B /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346E7274C342300818E5B /* ProfileHeader.swift */; };
 		9C7346EA274C342300818E5B /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346E7274C342300818E5B /* ProfileHeader.swift */; };
+		9C7346EC274C649100818E5B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346EB274C649100818E5B /* UserService.swift */; };
+		9C7346ED274C649100818E5B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346EB274C649100818E5B /* UserService.swift */; };
+		9C7346EE274C649100818E5B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346EB274C649100818E5B /* UserService.swift */; };
+		9C7346F0274C679100818E5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346EF274C679100818E5B /* User.swift */; };
+		9C7346F1274C679100818E5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346EF274C679100818E5B /* User.swift */; };
+		9C7346F2274C679100818E5B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346EF274C679100818E5B /* User.swift */; };
+		9C7346F4274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */; };
+		9C7346F5274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */; };
+		9C7346F6274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */; };
 		9CABEF0627484C010022169D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0527484C010022169D /* LoginController.swift */; };
 		9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0727484C0E0022169D /* RegistrationController.swift */; };
 		9CABEF0B274866680022169D /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0A274866680022169D /* AuthTextField.swift */; };
@@ -98,6 +107,9 @@
 		9C7346DF274B17A300818E5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C7346E3274C339800818E5B /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		9C7346E7274C342300818E5B /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		9C7346EB274C649100818E5B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		9C7346EF274C679100818E5B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		9CABEF0527484C010022169D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9CABEF0727484C0E0022169D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		9CABEF0A274866680022169D /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
@@ -203,6 +215,7 @@
 			children = (
 				9CD167A0274AF98F0057D3D3 /* ImageUploader.swift */,
 				9CD167A2274AF99A0057D3D3 /* AuthService.swift */,
+				9C7346EB274C649100818E5B /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -225,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				9CABEF0E274971340022169D /* AuthViewModel.swift */,
+				9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -242,6 +256,7 @@
 		9C24DC2C2745938B001A6F97 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C7346EF274C679100818E5B /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -550,6 +565,7 @@
 				9CABEF0627484C010022169D /* LoginController.swift in Sources */,
 				9C24DBF627459081001A6F97 /* AppDelegate.swift in Sources */,
 				9CD167A1274AF98F0057D3D3 /* ImageUploader.swift in Sources */,
+				9C7346F4274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */,
 				9CD167A3274AF99B0057D3D3 /* AuthService.swift in Sources */,
 				9C24DC3D2745BF4A001A6F97 /* FeedCell.swift in Sources */,
 				9CABEF0B274866680022169D /* AuthTextField.swift in Sources */,
@@ -565,6 +581,8 @@
 				9C24DC3727459996001A6F97 /* NotificationController.swift in Sources */,
 				9C24DC0027459081001A6F97 /* InstagramClone.xcdatamodeld in Sources */,
 				9C24DBF827459081001A6F97 /* SceneDelegate.swift in Sources */,
+				9C7346EC274C649100818E5B /* UserService.swift in Sources */,
+				9C7346F0274C679100818E5B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,8 +590,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C7346F5274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */,
 				9C24DC1027459082001A6F97 /* InstagramCloneTests.swift in Sources */,
+				9C7346ED274C649100818E5B /* UserService.swift in Sources */,
 				9C7346E5274C339800818E5B /* ProfileCell.swift in Sources */,
+				9C7346F1274C679100818E5B /* User.swift in Sources */,
 				9C7346E9274C342300818E5B /* ProfileHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,8 +605,11 @@
 			files = (
 				9C7346EA274C342300818E5B /* ProfileHeader.swift in Sources */,
 				9C7346E6274C339800818E5B /* ProfileCell.swift in Sources */,
+				9C7346F2274C679100818E5B /* User.swift in Sources */,
 				9C24DC1A27459082001A6F97 /* InstagramCloneUITests.swift in Sources */,
 				9C24DC1C27459082001A6F97 /* InstagramCloneUITestsLaunchTests.swift in Sources */,
+				9C7346EE274C649100818E5B /* UserService.swift in Sources */,
+				9C7346F6274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

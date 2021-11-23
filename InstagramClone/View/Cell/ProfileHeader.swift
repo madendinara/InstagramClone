@@ -6,13 +6,20 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHeader: UICollectionReusableView {
+    
+    // MARK: - Internal properties
+    var profileHeaderViewModel: ProfileHeaderViewModel? {
+        didSet {
+            configure()
+        }
+    }
     
     // MARK: - Properties
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "venom-7")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 40
         imageView.clipsToBounds = true
@@ -21,7 +28,6 @@ class ProfileHeader: UICollectionReusableView {
     private lazy var profileNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.text = "Temp name"
         label.textColor = .black
         return label
     }()
@@ -161,5 +167,11 @@ class ProfileHeader: UICollectionReusableView {
         let attrText = NSMutableAttributedString(string: "\(number)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 13), .foregroundColor: UIColor.black])
         attrText.append(NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 13), .foregroundColor: UIColor.lightGray]))
         return attrText
+    }
+    
+    func configure() {
+        guard let viewModel = profileHeaderViewModel else { return }
+        profileNameLabel.text = viewModel.fullname
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
     }
 }
