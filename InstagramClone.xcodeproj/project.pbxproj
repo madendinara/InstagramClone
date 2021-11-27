@@ -53,6 +53,7 @@
 		9CABEF0F274971340022169D /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0E274971340022169D /* AuthViewModel.swift */; };
 		9CD167A1274AF98F0057D3D3 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD167A0274AF98F0057D3D3 /* ImageUploader.swift */; };
 		9CD167A3274AF99B0057D3D3 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD167A2274AF99A0057D3D3 /* AuthService.swift */; };
+		9CFC988C274EDD6E00E20E22 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC988B274EDD6E00E20E22 /* UserCell.swift */; };
 		F561AEBB6C09E7014A7EB818 /* Pods_InstagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF417A8B1F60C6793BFD7B /* Pods_InstagramClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		9CABEF0E274971340022169D /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		9CD167A0274AF98F0057D3D3 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		9CD167A2274AF99A0057D3D3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		9CFC988B274EDD6E00E20E22 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		CAC97696633BE0E9F475CF45 /* Pods-InstagramClone-InstagramCloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone-InstagramCloneUITests.release.xcconfig"; path = "Target Support Files/Pods-InstagramClone-InstagramCloneUITests/Pods-InstagramClone-InstagramCloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +277,7 @@
 				9C24DC3C2745BF4A001A6F97 /* FeedCell.swift */,
 				9C7346E3274C339800818E5B /* ProfileCell.swift */,
 				9C7346E7274C342300818E5B /* ProfileHeader.swift */,
+				9CFC988B274EDD6E00E20E22 /* UserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				9C7346E4274C339800818E5B /* ProfileCell.swift in Sources */,
 				9CABEF0F274971340022169D /* AuthViewModel.swift in Sources */,
 				9C24DC3327459980001A6F97 /* SearchController.swift in Sources */,
+				9CFC988C274EDD6E00E20E22 /* UserCell.swift in Sources */,
 				9C24DC392745999D001A6F97 /* ProfileController.swift in Sources */,
 				9CABEF0D27486D040022169D /* AuthButton.swift in Sources */,
 				9C7346E8274C342300818E5B /* ProfileHeader.swift in Sources */,
