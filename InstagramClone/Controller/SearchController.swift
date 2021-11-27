@@ -42,7 +42,7 @@ extension SearchController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-        cell.user = users[indexPath.row]
+        cell.userViewModel = UserCellViewModel(user: users[indexPath.row])
         return cell
     }
 }

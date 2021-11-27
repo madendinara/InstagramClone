@@ -11,10 +11,9 @@ import SDWebImage
 class UserCell: UITableViewCell {
     
     // MARK: - Internal properties
-    var user: User? {
+    var userViewModel: UserCellViewModel? {
         didSet {
-            usernameLabel.text = user?.username
-            fulllnameLabel.text = user?.fullname
+            configure()
             }
         }
     
@@ -74,5 +73,12 @@ class UserCell: UITableViewCell {
             make.centerY.equalTo(profileImageView)
             make.leading.equalTo(profileImageView.snp.trailing).offset(8)
         }
+    }
+    
+    func configure() {
+        guard let viewModel = userViewModel else { return }
+        usernameLabel.text = userViewModel?.username
+        fulllnameLabel.text = userViewModel?.fullname
+        profileImageView.sd_setImage(with: userViewModel?.profileImageUrl)
     }
 }
