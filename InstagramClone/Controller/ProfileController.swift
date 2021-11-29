@@ -27,6 +27,7 @@ class ProfileController: UICollectionViewController {
         super.viewDidLoad()
         configureCollectionView()
         checkIfUserIsFollowed()
+        getUserStats()
     }
     
     // MARK: - Methods
@@ -40,6 +41,13 @@ class ProfileController: UICollectionViewController {
     func checkIfUserIsFollowed() {
         UserService.checkIfUserIsFollowed(uid: user.uid) { isFollowed in
             self.user.isFollowed = isFollowed
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func getUserStats() {
+        UserService.getUserStats(uid: user.uid) { userStats in
+            self.user.userStats = userStats
             self.collectionView.reloadData()
         }
     }
@@ -102,11 +110,13 @@ extension ProfileController: ProfileHeaderDelegate {
         } else if (user.isFollowed) {
             UserService.unfollow(uid: user.uid) { error in
                 self.user.isFollowed = false
+                self.getUserStats()
                 self.collectionView.reloadData()
             }
         } else {
             UserService.follow(uid: user.uid) { error in
                 self.user.isFollowed = true
+                self.getUserStats()
                 self.collectionView.reloadData()
             }
         }

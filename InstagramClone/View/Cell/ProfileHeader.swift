@@ -51,7 +51,6 @@ class ProfileHeader: UICollectionReusableView {
     private lazy var postsNumberLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.attributedText = attributedNumbersString(number: 5, text: "posts")
         label.textAlignment = .center
         return label
     }()
@@ -59,14 +58,12 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.attributedText = attributedNumbersString(number: 2, text: "followers")
         return label
     }()
     private lazy var followingNumberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.attributedText = attributedNumbersString(number: 1, text: "following")
         return label
     }()
     private lazy var labelsStackView: UIStackView = {
@@ -168,12 +165,6 @@ class ProfileHeader: UICollectionReusableView {
         delegate?.header(self, didTappedForUser: viewModel.user)
     }
     
-    func attributedNumbersString(number: Int, text: String) -> NSAttributedString {
-        let attrText = NSMutableAttributedString(string: "\(number)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 13), .foregroundColor: UIColor.black])
-        attrText.append(NSAttributedString(string: text, attributes: [.font: UIFont.systemFont(ofSize: 13), .foregroundColor: UIColor.lightGray]))
-        return attrText
-    }
-    
     func configure() {
         guard let viewModel = profileHeaderViewModel else { return }
         profileNameLabel.text = viewModel.fullname
@@ -181,5 +172,9 @@ class ProfileHeader: UICollectionReusableView {
         profileEditButton.setTitle(viewModel.isFollowingButtonText, for: .normal)
         profileEditButton.backgroundColor = viewModel.buttonBackgroundColor
         profileEditButton.setTitleColor(viewModel.buttonTextColor, for: .normal)
+        
+        followersNumberLabel.attributedText = profileHeaderViewModel?.followersCount
+        followingNumberLabel.attributedText = profileHeaderViewModel?.followingCount
+        postsNumberLabel.attributedText = profileHeaderViewModel?.postsCount
     }
 }

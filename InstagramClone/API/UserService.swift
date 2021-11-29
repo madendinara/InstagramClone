@@ -53,4 +53,17 @@ struct UserService {
             completion(isFollowed)
         }
     }
+    
+    static func getUserStats(uid: String, completion: @escaping(UserStats) -> Void) {
+        Firestore.firestore().collection("followers").document(uid).collection("user-followers").getDocuments { snapshot, error in
+            let followers = snapshot?.documents.count ?? 0
+            
+            Firestore.firestore().collection("following").document(uid).collection("user-following").getDocuments { snapshot, error in
+                let following = snapshot?.documents.count ?? 0
+                
+                completion(UserStats(followers: followers, following: following))
+            }
+        }
+    }
+    
 }
