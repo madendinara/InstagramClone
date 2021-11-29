@@ -8,6 +8,10 @@
 import UIKit
 import SDWebImage
 
+protocol ProfileHeaderDelegate: class {
+    func header(_ header: ProfileHeader, didTappedForUser user: User)
+}
+
 class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Internal properties
@@ -16,6 +20,7 @@ class ProfileHeader: UICollectionReusableView {
             configure()
         }
     }
+    weak var delegate: ProfileHeaderDelegate?
     
     // MARK: - Properties
     private lazy var profileImageView: UIImageView = {
@@ -35,7 +40,6 @@ class ProfileHeader: UICollectionReusableView {
         let button = UIButton()
         button.setHeight(30)
         button.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
-        button.setTitle("Edit Profile", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
@@ -160,7 +164,8 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     @objc func tappedEditButton(){
-        
+        guard let viewModel = profileHeaderViewModel else { return }
+        delegate?.header(self, didTappedForUser: viewModel.user)
     }
     
     func attributedNumbersString(number: Int, text: String) -> NSAttributedString {
@@ -173,5 +178,8 @@ class ProfileHeader: UICollectionReusableView {
         guard let viewModel = profileHeaderViewModel else { return }
         profileNameLabel.text = viewModel.fullname
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        profileEditButton.setTitle(viewModel.isFollowingButtonText, for: .normal)
+        profileEditButton.backgroundColor = viewModel.buttonBackgroundColor
+        profileEditButton.setTitleColor(viewModel.buttonTextColor, for: .normal)
     }
 }
