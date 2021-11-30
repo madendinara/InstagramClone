@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import YPImagePicker
 
 class MainTabController: UITabBarController {
     
@@ -24,6 +25,7 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
         fetchUser()
         checkIfUserLoggedIn()
+        self.delegate = self
     }
     
     // MARK: - Methods
@@ -74,6 +76,15 @@ class MainTabController: UITabBarController {
             self.user = user
         }
     }
+    
+    func didFinishPickingImage(_ picker: YPImagePicker) {
+        picker.didFinishPicking { items, cancelled in
+            picker.dismiss(animated: true) {
+                guard let pickedImage = items.singlePhoto?.image else { return }
+                print("Finishing picking image")
+            }
+        }
+    }
 
 }
 
@@ -83,4 +94,30 @@ extension MainTabController: LoginControllerDelegate {
         fetchUser()
     }
     
+}
+
+// MARK: - UITabBarControllerDelegate
+extension MainTabController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.firstIndex(of: viewController)
+        
+        if index == 2 {
+            var config = YPImagePickerConfiguration()
+            config.library.mediaType = .photo
+            config.shouldSaveNewPicturesToAlbum = false
+            config.startOnScreen = .library
+            config.screens = [.library]
+            config.hidesBottomBar = false
+            config.hidesStatusBar = false
+            config.library.maxNumberOfItems = 1
+            
+            let picker = YPImagePicker(configuration: config)
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: true, completion: nil)
+            
+            didFinishPickingImage(picker)
+            
+        }
+        return true
+    }
 }
