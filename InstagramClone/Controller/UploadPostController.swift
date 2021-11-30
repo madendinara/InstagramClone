@@ -1,0 +1,95 @@
+//
+//  UploadPostController.swift
+//  InstagramClone
+//
+//  Created by Динара Зиманова on 11/29/21.
+//
+
+import UIKit
+
+class UploadPostController: UIViewController {
+    
+    // MARK: - Internal properties
+    var postImage: UIImage
+    
+    // MARK: - Properties
+    private lazy var postImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 10
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    private lazy var postTextField: UITextView = {
+        let textField = UITextView()
+        return textField
+    }()
+    private lazy var characterCountLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.text = "0/100"
+        return label
+    }()
+    
+    // MARK: - Init
+    
+    init(postImage: UIImage) {
+        self.postImage = postImage
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView()
+    }
+    
+    // MARK: - Methods
+    func configureView() {
+        postImageView.image = postImage
+        view.backgroundColor = .white
+        navigationItem.title = "Upload Photo"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                           target: self,
+                                                           action: #selector(cancelPostingImage))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(sharePostingImage))
+        
+        [postImageView, postTextField, characterCountLabel].forEach { view.addSubview($0) }
+        makeConstaints()
+    }
+    
+    func makeConstaints() {
+        postImageView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 180, height: 180))
+        }
+        postTextField.snp.makeConstraints { make in
+            make.top.equalTo(postImageView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().inset(12)
+            make.trailing.equalToSuperview().inset(12)
+            make.height.equalTo(80)
+        }
+        characterCountLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(postTextField.snp.bottom)
+            make.trailing.equalToSuperview().inset(12)
+        }
+    }
+    
+    @objc func cancelPostingImage() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func sharePostingImage() {
+        
+    }
+}
