@@ -20,8 +20,11 @@ class UploadPostController: UIViewController {
         imageView.clipsToBounds = true
         return imageView
     }()
-    private lazy var postTextField: UITextView = {
-        let textField = UITextView()
+    private lazy var postTextField: InputTextView = {
+        let textField = InputTextView()
+        textField.textPlaceholder = "Enter caption.."
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.delegate = self
         return textField
     }()
     private lazy var characterCountLabel: UILabel = {
@@ -91,5 +94,19 @@ class UploadPostController: UIViewController {
     
     @objc func sharePostingImage() {
         
+    }
+    
+    func checkMaxLength(_ textView: UITextView) {
+        if textView.text.count > 100 {
+            textView.deleteBackward()
+        }
+    }
+}
+
+extension UploadPostController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        checkMaxLength(textView)
+        let count = textView.text.count
+        characterCountLabel.text = "\(count)/100"
     }
 }
