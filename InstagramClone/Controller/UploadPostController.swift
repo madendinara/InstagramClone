@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol UploadPostControllerDelegate: class {
+    func controller(_ controller: UploadPostController)
+}
+
 class UploadPostController: UIViewController {
     
     // MARK: - Internal properties
     var postImage: UIImage
+    weak var delegate: UploadPostControllerDelegate?
     
     // MARK: - Properties
     private lazy var postImageView: UIImageView = {
@@ -93,7 +98,14 @@ class UploadPostController: UIViewController {
     }
     
     @objc func sharePostingImage() {
-        
+        guard let caption = postTextField.text else { return }
+        PostService.uploadPost(caption: caption, image: postImage) { error in
+            if let error = error {
+                print("Error to upload post \(error.localizedDescription)")
+                return
+            }
+            self.delegate?.controller(self)
+        }
     }
     
     func checkMaxLength(_ textView: UITextView) {
