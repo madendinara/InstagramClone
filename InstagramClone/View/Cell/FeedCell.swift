@@ -10,10 +10,17 @@ import SnapKit
 
 class FeedCell: UICollectionViewCell {
     
+    // MARK: - Internal Properties
+    var postViewModel: PostCellViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     // MARK: - Properties
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "venom-7")
+        imageView.backgroundColor = .lightGray
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 40 / 2
         imageView.contentMode = .scaleAspectFill
@@ -22,7 +29,6 @@ class FeedCell: UICollectionViewCell {
     }()
     private lazy var usernameButton: UIButton = {
         let button = UIButton()
-        button.setTitle("username", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
@@ -62,13 +68,11 @@ class FeedCell: UICollectionViewCell {
     }()
     private lazy var likeLabel: UILabel = {
         let label = UILabel()
-        label.text = "1 like"
         label.font = UIFont.boldSystemFont(ofSize: 13)
         return label
     }()
     private lazy var captionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Some text"
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -101,6 +105,16 @@ class FeedCell: UICollectionViewCell {
     
     @objc func didTapUsername() {
         print("username tapped")
+    }
+    
+    func configure() {
+        guard let viewModel = postViewModel else { return }
+
+        captionLabel.text = viewModel.caption
+        postImage.sd_setImage(with: viewModel.imageUrl)
+        likeLabel.text = viewModel.likesText
+        profileImageView.sd_setImage(with: viewModel.ownerUserImageUrl)
+        usernameButton.setTitle(viewModel.ownerUsername, for: .normal)
     }
     
     func configureCell(){

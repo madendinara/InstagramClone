@@ -15,6 +15,7 @@ class UploadPostController: UIViewController {
     
     // MARK: - Internal properties
     var postImage: UIImage
+    var currentUser: User?
     weak var delegate: UploadPostControllerDelegate?
     
     // MARK: - Properties
@@ -99,9 +100,10 @@ class UploadPostController: UIViewController {
     
     @objc func sharePostingImage() {
         guard let caption = postTextField.text else { return }
+        guard let currentUser = currentUser else { return }
         showLoader(true)
         
-        PostService.uploadPost(caption: caption, image: postImage) { error in
+        PostService.uploadPost(caption: caption, image: postImage, currentUser: currentUser) { error in
             if let error = error {
                 print("Error to upload post \(error.localizedDescription)")
                 return

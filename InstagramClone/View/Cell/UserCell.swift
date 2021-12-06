@@ -14,8 +14,8 @@ class UserCell: UITableViewCell {
     var userViewModel: UserCellViewModel? {
         didSet {
             configure()
-            }
         }
+    }
     
     // MARK: - Properties
     private lazy var profileImageView: UIImageView = {
