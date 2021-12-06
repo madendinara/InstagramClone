@@ -10,6 +10,7 @@ target 'InstagramClone' do
 	pod 'Firebase/Storage'
 	pod 'SDWebImage'
 	pod 'YPImagePicker'
+	pod 'JGProgressHUD'
 
   use_frameworks!
 
