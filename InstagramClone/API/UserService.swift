@@ -60,7 +60,13 @@ struct UserService {
             Firestore.firestore().collection("following").document(uid).collection("user-following").getDocuments { snapshot, error in
                 let following = snapshot?.documents.count ?? 0
                 
-                completion(UserStats(followers: followers, following: following))
+                Firestore.firestore().collection("posts").whereField("owner", isEqualTo: uid).getDocuments { snapshot, error in
+                    let posts = snapshot?.documents.count ?? 0
+                    
+                    completion(UserStats(posts: posts, followers: followers, following: following))
+
+                }
+                
             }
         }
     }

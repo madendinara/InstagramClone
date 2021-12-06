@@ -12,7 +12,7 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Internal Properties
     var posts = [Post]()
-    
+    var post: Post?
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -26,8 +26,11 @@ class FeedController: UICollectionViewController {
     func configureViews() {
         navigationItem.title = "Feed"
         collectionView.backgroundColor = .white
+        
+        if post == nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(tappedLogOut))
+        }
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "Cell")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(tappedLogOut))
         
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(refreshValue), for: .valueChanged)
@@ -55,6 +58,8 @@ class FeedController: UICollectionViewController {
     
     func getPosts() {
         PostService.getPosts { posts in
+            guard self.post == nil else { return }
+            
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
@@ -67,12 +72,19 @@ class FeedController: UICollectionViewController {
 extension FeedController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
+        return post == nil ? posts.count : 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FeedCell
-        cell.postViewModel = PostCellViewModel(post: posts[indexPath.row])
+        
+        if let post = post {
+            cell.postViewModel = PostCellViewModel(post: post)
+        }
+        else {
+            cell.postViewModel = PostCellViewModel(post: posts[indexPath.row])
+        }
+        
         return cell
     }
 }

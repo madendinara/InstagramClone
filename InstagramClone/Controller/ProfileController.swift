@@ -11,6 +11,7 @@ class ProfileController: UICollectionViewController {
     
     // MARK: - Properties
     var user: User
+    var posts = [Post]()
     
     // MARK: - Init
     init(user: User) {
@@ -28,6 +29,7 @@ class ProfileController: UICollectionViewController {
         configureCollectionView()
         checkIfUserIsFollowed()
         getUserStats()
+        getPosts()
     }
     
     // MARK: - Methods
@@ -52,18 +54,26 @@ class ProfileController: UICollectionViewController {
         }
     }
     
+    func getPosts() {
+        PostService.getPosts(user.uid) { posts in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource
 extension ProfileController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return posts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
+        cell.postViewModel = PostCellViewModel(post: posts[indexPath.row])
         return cell
     }
     
@@ -79,7 +89,11 @@ extension ProfileController {
 
 // MARK: - UICollectionViewDelegate
 extension ProfileController {
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        controller.post = posts[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

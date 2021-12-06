@@ -39,7 +39,7 @@ struct ProfileHeaderViewModel {
         return attributedNumbersString(number: user.userStats.followers, text: "followers")
     }
     var postsCount: NSAttributedString {
-        return attributedNumbersString(number: 4, text: "posts")
+        return attributedNumbersString(number: user.userStats.posts, text: "posts")
     }
     
     init(user: User) {

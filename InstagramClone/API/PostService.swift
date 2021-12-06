@@ -29,8 +29,19 @@ struct PostService {
         Firestore.firestore().collection("posts").order(by: "timestamp", descending: true).getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }
             
-            let post = documents.map({ Post(postId: $0.documentID, dictionary: $0.data())})
-            completion(post)
+            let posts = documents.map({ Post(postId: $0.documentID, dictionary: $0.data())})
+            completion(posts)
+        }
+    }
+    
+    static func getPosts(_ ownerUid: String, completion: @escaping([Post]) -> Void) {
+        let query = Firestore.firestore().collection("posts").whereField("owner", isEqualTo: ownerUid)
+        
+        query.getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else { return }
+            
+            let posts = documents.map({ Post(postId: $0.documentID, dictionary: $0.data())})
+            completion(posts)
         }
     }
 }

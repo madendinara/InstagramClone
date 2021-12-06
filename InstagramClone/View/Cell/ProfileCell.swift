@@ -9,10 +9,17 @@ import UIKit
 
 class ProfileCell: UICollectionViewCell {
     
+    // MARK: - Internal properties
+    var postViewModel: PostCellViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     // MARK: - Properties
     private lazy var feedImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "venom-7")
+        imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -29,6 +36,11 @@ class ProfileCell: UICollectionViewCell {
     }
     
     // MARK: - Methods
+    func configure() {
+        guard let viewModel = postViewModel else { return }
+        feedImageView.sd_setImage(with: viewModel.imageUrl)
+    }
+    
     func configureCell(){
         addSubview(feedImageView)
         makeConstraints()
