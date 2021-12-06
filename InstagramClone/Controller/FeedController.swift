@@ -28,6 +28,15 @@ class FeedController: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "Cell")
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(tappedLogOut))
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(refreshValue), for: .valueChanged)
+        collectionView.refreshControl = refresher
+    }
+    
+    @objc func refreshValue() {
+        posts.removeAll()
+        getPosts()
     }
     
     @objc func tappedLogOut() {
@@ -47,6 +56,7 @@ class FeedController: UICollectionViewController {
     func getPosts() {
         PostService.getPosts { posts in
             self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
