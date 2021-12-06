@@ -49,6 +49,9 @@
 		9C7346F4274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */; };
 		9C7346F5274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */; };
 		9C7346F6274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */; };
+		9C91F295275EB343004B745B /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F294275EB343004B745B /* CommentController.swift */; };
+		9C91F297275EB3B0004B745B /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F296275EB3B0004B745B /* CommentCell.swift */; };
+		9C91F299275EBBF6004B745B /* CommentCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F298275EBBF6004B745B /* CommentCellBottomView.swift */; };
 		9CABEF0627484C010022169D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0527484C010022169D /* LoginController.swift */; };
 		9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0727484C0E0022169D /* RegistrationController.swift */; };
 		9CABEF0B274866680022169D /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0A274866680022169D /* AuthTextField.swift */; };
@@ -120,6 +123,9 @@
 		9C7346EB274C649100818E5B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		9C7346EF274C679100818E5B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		9C91F294275EB343004B745B /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		9C91F296275EB3B0004B745B /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		9C91F298275EBBF6004B745B /* CommentCellBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellBottomView.swift; sourceTree = "<group>"; };
 		9CABEF0527484C010022169D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9CABEF0727484C0E0022169D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		9CABEF0A274866680022169D /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
@@ -246,6 +252,7 @@
 				9C24DC3627459996001A6F97 /* NotificationController.swift */,
 				9C24DC382745999D001A6F97 /* ProfileController.swift */,
 				9CFF7DD42755D5ED00B2C064 /* UploadPostController.swift */,
+				9C91F294275EB343004B745B /* CommentController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 				9CABEF0A274866680022169D /* AuthTextField.swift */,
 				9CABEF0C27486D040022169D /* AuthButton.swift */,
 				9CFF7DD82755DF2200B2C064 /* InputTextView.swift */,
+				9C91F298275EBBF6004B745B /* CommentCellBottomView.swift */,
 				9C24DC3E2745C041001A6F97 /* Cell */,
 			);
 			path = View;
@@ -296,6 +304,7 @@
 				9C7346E3274C339800818E5B /* ProfileCell.swift */,
 				9C7346E7274C342300818E5B /* ProfileHeader.swift */,
 				9CFC988B274EDD6E00E20E22 /* UserCell.swift */,
+				9C91F296275EB3B0004B745B /* CommentCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -585,14 +594,17 @@
 				9C24DBFA27459081001A6F97 /* ViewController.swift in Sources */,
 				9C24DC3127459975001A6F97 /* FeedController.swift in Sources */,
 				9CABEF0627484C010022169D /* LoginController.swift in Sources */,
+				9C91F299275EBBF6004B745B /* CommentCellBottomView.swift in Sources */,
 				9C24DBF627459081001A6F97 /* AppDelegate.swift in Sources */,
 				9CD167A1274AF98F0057D3D3 /* ImageUploader.swift in Sources */,
 				9C7346F4274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */,
 				9CFF7DD52755D5ED00B2C064 /* UploadPostController.swift in Sources */,
+				9C91F295275EB343004B745B /* CommentController.swift in Sources */,
 				9CD167A3274AF99B0057D3D3 /* AuthService.swift in Sources */,
 				9C11772D275DA69500CAD2B3 /* Post.swift in Sources */,
 				9C24DC3D2745BF4A001A6F97 /* FeedCell.swift in Sources */,
 				9CABEF0B274866680022169D /* AuthTextField.swift in Sources */,
+				9C91F297275EB3B0004B745B /* CommentCell.swift in Sources */,
 				9C7346E4274C339800818E5B /* ProfileCell.swift in Sources */,
 				9CFF7DD92755DF2200B2C064 /* InputTextView.swift in Sources */,
 				9CABEF0F274971340022169D /* AuthViewModel.swift in Sources */,

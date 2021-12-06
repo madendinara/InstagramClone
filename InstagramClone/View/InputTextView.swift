@@ -14,6 +14,12 @@ class InputTextView: UITextView {
         didSet { placeholder.text = textPlaceholder }
     }
     
+    var placeholderCentering: Bool = false {
+        didSet {
+            makeConstraints()
+        }
+    }
+    
     // MARK: - Properties
     private lazy var placeholder: UILabel = {
         let label = UILabel()
@@ -43,10 +49,17 @@ class InputTextView: UITextView {
     
     func makeConstraints() {
         placeholder.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(4)
-            make.leading.equalToSuperview().inset(6)
+            if !placeholderCentering {
+                make.top.equalToSuperview().inset(4)
+                make.leading.equalToSuperview().inset(6)
+            }
+            else {
+                make.leading.equalToSuperview().inset(6)
+                make.centerY.equalToSuperview()
+            }
         }
     }
+    
     
     @objc func handleTextDidChange() {
         placeholder.isHidden = !text.isEmpty

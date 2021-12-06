@@ -8,9 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol FeedCellDelegate: class {
+    func cell(_ cell: FeedCell, wantsToShowCommentFor post: Post)
+}
+
 class FeedCell: UICollectionViewCell {
     
     // MARK: - Internal Properties
+    weak var delegate: FeedCellDelegate?
     var postViewModel: PostCellViewModel? {
         didSet {
             configure()
@@ -31,7 +36,6 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
         return button
     }()
     private lazy var postImage: UIImageView = {
@@ -51,6 +55,7 @@ class FeedCell: UICollectionViewCell {
     private lazy var commentButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "comment"), for: .normal)
+        button.addTarget(self, action: #selector(didTapComment), for: .touchUpInside)
         button.tintColor = .black
         return button
     }()
@@ -103,8 +108,10 @@ class FeedCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    @objc func didTapUsername() {
-        print("username tapped")
+    @objc func didTapComment() {
+        guard let post = postViewModel?.post else { return }
+        
+        delegate?.cell(self, wantsToShowCommentFor: post)
     }
     
     func configure() {
