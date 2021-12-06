@@ -34,10 +34,15 @@ class ProfileController: UICollectionViewController {
     
     // MARK: - Methods
     func configureCollectionView(){
+    
         navigationItem.title = user.username
         collectionView.backgroundColor = .white
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: "ProfileCell")
         collectionView.register(ProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ProfileHeader")
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(refreshValue), for: .valueChanged)
+        collectionView.refreshControl = refresher
     }
     
     func checkIfUserIsFollowed() {
@@ -57,8 +62,14 @@ class ProfileController: UICollectionViewController {
     func getPosts() {
         PostService.getPosts(user.uid) { posts in
             self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
+    }
+    
+    @objc func refreshValue() {
+        posts.removeAll()
+        getPosts()
     }
     
 }

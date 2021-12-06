@@ -13,6 +13,7 @@ class FeedController: UICollectionViewController {
     // MARK: - Internal Properties
     var posts = [Post]()
     var post: Post?
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
