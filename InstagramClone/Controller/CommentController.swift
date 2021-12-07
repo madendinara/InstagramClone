@@ -9,6 +9,9 @@ import UIKit
 
 class CommentController: UICollectionViewController {
     
+    // MARK: - Internal properties
+    private let post: Post
+    
     // MARK: - Properties
     private lazy var postCommentView: CommentCellBottomView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
@@ -16,6 +19,16 @@ class CommentController: UICollectionViewController {
         view.delegate = self
         return view
     }()
+    
+    // MARK: - Init
+    init(post: Post) {
+        self.post = post
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -74,7 +87,17 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
 // MARK: - CommentCellBottomViewDelegate
 extension CommentController: CommentCellBottomViewDelegate {
     func view(_ view: CommentCellBottomView, wantsToPost comment: String) {
-        view.clearCommentText()
+        
+        guard let tab = tabBarController as? MainTabController else { return }
+        guard let user = tab.user else { return }
+        self.showLoader(true)
+        CommentService.uploadComment(commentText: comment, postId: post.postId, user: user) { error in
+            if let error = error {
+                print("Error of uploading comment is \(error.localizedDescription)")
+            }
+            self.showLoader(false)
+            self.postCommentView.clearCommentText()
+        }
     }
-
+    
 }
