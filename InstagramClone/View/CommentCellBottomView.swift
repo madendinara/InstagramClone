@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol CommentCellBottomViewDelegate: class {
+    func view(_ view: CommentCellBottomView, wantsToPost comment: String)
+}
+
 class CommentCellBottomView: UIView {
+    
+    // MARK: - Interna proeperties
+    weak var delegate: CommentCellBottomViewDelegate?
     
     // MARK: - Properties
     private lazy var commentTextView: InputTextView = {
@@ -73,7 +80,12 @@ class CommentCellBottomView: UIView {
         }
     }
     
+    func clearCommentText() {
+        commentTextView.text = ""
+        commentTextView.placeholder.isHidden = false
+    }
+    
     @objc func tappedPostButton() {
-        
+        delegate?.view(self, wantsToPost: commentTextView.text)
     }
 }

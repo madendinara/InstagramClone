@@ -13,6 +13,7 @@ class CommentController: UICollectionViewController {
     private lazy var postCommentView: CommentCellBottomView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let view = CommentCellBottomView(frame: frame)
+        view.delegate = self
         return view
     }()
     
@@ -68,4 +69,12 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 80)
     }
+}
+
+// MARK: - CommentCellBottomViewDelegate
+extension CommentController: CommentCellBottomViewDelegate {
+    func view(_ view: CommentCellBottomView, wantsToPost comment: String) {
+        view.clearCommentText()
+    }
+
 }

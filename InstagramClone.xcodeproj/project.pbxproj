@@ -52,6 +52,8 @@
 		9C91F295275EB343004B745B /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F294275EB343004B745B /* CommentController.swift */; };
 		9C91F297275EB3B0004B745B /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F296275EB3B0004B745B /* CommentCell.swift */; };
 		9C91F299275EBBF6004B745B /* CommentCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F298275EBBF6004B745B /* CommentCellBottomView.swift */; };
+		9C91F29D2760059C004B745B /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F29C2760059C004B745B /* CommentService.swift */; };
+		9C91F29F276005A1004B745B /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F29E276005A1004B745B /* Comment.swift */; };
 		9CABEF0627484C010022169D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0527484C010022169D /* LoginController.swift */; };
 		9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0727484C0E0022169D /* RegistrationController.swift */; };
 		9CABEF0B274866680022169D /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0A274866680022169D /* AuthTextField.swift */; };
@@ -126,6 +128,8 @@
 		9C91F294275EB343004B745B /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		9C91F296275EB3B0004B745B /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		9C91F298275EBBF6004B745B /* CommentCellBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellBottomView.swift; sourceTree = "<group>"; };
+		9C91F29C2760059C004B745B /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		9C91F29E276005A1004B745B /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		9CABEF0527484C010022169D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9CABEF0727484C0E0022169D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		9CABEF0A274866680022169D /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				9CD167A2274AF99A0057D3D3 /* AuthService.swift */,
 				9C7346EB274C649100818E5B /* UserService.swift */,
 				9CFF7DDA275700B700B2C064 /* PostService.swift */,
+				9C91F29C2760059C004B745B /* CommentService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			children = (
 				9C7346EF274C679100818E5B /* User.swift */,
 				9C11772C275DA69500CAD2B3 /* Post.swift */,
+				9C91F29E276005A1004B745B /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -596,12 +602,14 @@
 				9CABEF0627484C010022169D /* LoginController.swift in Sources */,
 				9C91F299275EBBF6004B745B /* CommentCellBottomView.swift in Sources */,
 				9C24DBF627459081001A6F97 /* AppDelegate.swift in Sources */,
+				9C91F29F276005A1004B745B /* Comment.swift in Sources */,
 				9CD167A1274AF98F0057D3D3 /* ImageUploader.swift in Sources */,
 				9C7346F4274C6B1E00818E5B /* ProfileHeaderViewModel.swift in Sources */,
 				9CFF7DD52755D5ED00B2C064 /* UploadPostController.swift in Sources */,
 				9C91F295275EB343004B745B /* CommentController.swift in Sources */,
 				9CD167A3274AF99B0057D3D3 /* AuthService.swift in Sources */,
 				9C11772D275DA69500CAD2B3 /* Post.swift in Sources */,
+				9C91F29D2760059C004B745B /* CommentService.swift in Sources */,
 				9C24DC3D2745BF4A001A6F97 /* FeedCell.swift in Sources */,
 				9CABEF0B274866680022169D /* AuthTextField.swift in Sources */,
 				9C91F297275EB3B0004B745B /* CommentCell.swift in Sources */,

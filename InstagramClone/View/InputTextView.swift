@@ -21,7 +21,7 @@ class InputTextView: UITextView {
     }
     
     // MARK: - Properties
-    private lazy var placeholder: UILabel = {
+    lazy var placeholder: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         label.text = textPlaceholder
