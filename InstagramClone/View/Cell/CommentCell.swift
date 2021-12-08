@@ -9,14 +9,16 @@ import UIKit
 
 class CommentCell: UICollectionViewCell {
     
+    // MARK: - Internal properties
+    var commentsViewModel: CommentViewModel? {
+        didSet {
+          configure()
+        }
+    }
+    
     // MARK: - Properties
     private lazy var commentLabel: UILabel = {
         let label = UILabel()
-        
-        let attributedText = NSMutableAttributedString(string: "maden", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: " First comment", attributes: [.font: UIFont.systemFont(ofSize: 14)]))
-        label.attributedText = attributedText
-        
         return label
     }()
     private lazy var profileImageView: UIImageView = {
@@ -52,8 +54,16 @@ class CommentCell: UICollectionViewCell {
         }
         commentLabel.snp.makeConstraints { make in
             make.leading.equalTo(profileImageView.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().inset(8)
             make.centerY.equalToSuperview()
         }
         
+    }
+    
+    func configure() {
+        guard let viewModel = commentsViewModel else { return }
+        
+        commentLabel.attributedText = viewModel.attributedCommentString()
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
     }
 }

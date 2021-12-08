@@ -10,18 +10,16 @@ import UIKit
 
 struct Comment {
     var commentText: String
-    let owner: String
     let timestamp: Timestamp
-    let postId: String
-    let ownerUserImageUrl: String
+    let uid: String
+    let profileImageUrl: String
     let ownerUsername: String
 
-    init(postId: String, dictionary: [String: Any]){
-        self.postId = postId
+    init(dictionary: [String: Any]){
+        self.uid = dictionary["uid"] as? String ?? ""
         self.commentText = dictionary["commentText"] as? String ?? ""
-        self.owner = dictionary["owner"] as? String ?? ""
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
-        self.ownerUserImageUrl = dictionary["ownerUserImageUrl"] as? String ?? ""
+        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.ownerUsername = dictionary["ownerUsername"] as? String ?? ""
     }
 }

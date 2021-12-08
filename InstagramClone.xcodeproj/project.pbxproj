@@ -54,6 +54,7 @@
 		9C91F299275EBBF6004B745B /* CommentCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F298275EBBF6004B745B /* CommentCellBottomView.swift */; };
 		9C91F29D2760059C004B745B /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F29C2760059C004B745B /* CommentService.swift */; };
 		9C91F29F276005A1004B745B /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F29E276005A1004B745B /* Comment.swift */; };
+		9C91F2A12761171B004B745B /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F2A02761171B004B745B /* CommentViewModel.swift */; };
 		9CABEF0627484C010022169D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0527484C010022169D /* LoginController.swift */; };
 		9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0727484C0E0022169D /* RegistrationController.swift */; };
 		9CABEF0B274866680022169D /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0A274866680022169D /* AuthTextField.swift */; };
@@ -130,6 +131,7 @@
 		9C91F298275EBBF6004B745B /* CommentCellBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellBottomView.swift; sourceTree = "<group>"; };
 		9C91F29C2760059C004B745B /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		9C91F29E276005A1004B745B /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		9C91F2A02761171B004B745B /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		9CABEF0527484C010022169D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9CABEF0727484C0E0022169D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		9CABEF0A274866680022169D /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				9C7346F3274C6B1E00818E5B /* ProfileHeaderViewModel.swift */,
 				9C0512A22751C53E00950F67 /* UserCellViewModel.swift */,
 				9C11772E275DAA2F00CAD2B3 /* PostCellViewModel.swift */,
+				9C91F2A02761171B004B745B /* CommentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				9C24DC3327459980001A6F97 /* SearchController.swift in Sources */,
 				9CFC988C274EDD6E00E20E22 /* UserCell.swift in Sources */,
 				9C24DC392745999D001A6F97 /* ProfileController.swift in Sources */,
+				9C91F2A12761171B004B745B /* CommentViewModel.swift in Sources */,
 				9C0512A32751C53E00950F67 /* UserCellViewModel.swift in Sources */,
 				9CABEF0D27486D040022169D /* AuthButton.swift in Sources */,
 				9C7346E8274C342300818E5B /* ProfileHeader.swift in Sources */,
