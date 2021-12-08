@@ -5,11 +5,11 @@
 //  Created by Динара Зиманова on 12/5/21.
 //
 
-import Foundation
+import UIKit
 import Firebase
 
 struct PostCellViewModel {
-    let post: Post
+    var post: Post
     
     var imageUrl: URL?  {
         return URL(string: post.imageUrl)
@@ -25,6 +25,10 @@ struct PostCellViewModel {
     }
     var timestamp: Timestamp {
         return post.timestamp
+    }
+    var likeImage: UIImage? {
+        let imageName = post.isLiked ? "like_selected" : "like_unselected"
+        return UIImage(named: imageName)
     }
     var likesText: String {
         if post.likes <= 1 {

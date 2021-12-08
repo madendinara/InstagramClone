@@ -10,6 +10,7 @@ import SnapKit
 
 protocol FeedCellDelegate: class {
     func cell(_ cell: FeedCell, wantsToShowCommentFor post: Post)
+    func cell(_ cell: FeedCell, liked post: Post)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -46,9 +47,10 @@ class FeedCell: UICollectionViewCell {
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
-    private lazy var likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "like_unselected"), for: .normal)
+        button.setImage(postViewModel?.likeImage, for: .normal)
+        button.addTarget(self, action: #selector(didTappedLikeButton), for: .touchUpInside)
         button.tintColor = .black
         return button
     }()
@@ -83,7 +85,6 @@ class FeedCell: UICollectionViewCell {
     }()
     private lazy var postTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "1 like"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .systemGray
         return label
@@ -120,6 +121,11 @@ class FeedCell: UICollectionViewCell {
         captionLabel.text = viewModel.caption
         postImage.sd_setImage(with: viewModel.imageUrl)
         likeLabel.text = viewModel.likesText
+        
+        // Fix this line
+        postTimeLabel.text = "\(viewModel.timestamp.seconds)"
+        
+        likeButton.setImage(viewModel.likeImage, for: .normal)
         profileImageView.sd_setImage(with: viewModel.ownerUserImageUrl)
         usernameButton.setTitle(viewModel.ownerUsername, for: .normal)
     }
@@ -168,5 +174,12 @@ class FeedCell: UICollectionViewCell {
             make.top.equalTo(captionLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(8)
         }
+    }
+    @objc func didTappedLikeButton() {
+        guard let postViewModel = postViewModel else {
+            return
+        }
+
+        delegate?.cell(self, liked: postViewModel.post)
     }
 }

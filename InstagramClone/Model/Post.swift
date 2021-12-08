@@ -14,9 +14,11 @@ struct Post {
     let owner: String
     let timestamp: Timestamp
     var likes: Int
-    let postId: String
+    var postId: String
     let ownerUserImageUrl: String
     let ownerUsername: String
+
+    var isLiked: Bool = false
 
     init(postId: String, dictionary: [String: Any]){
         self.postId = postId

@@ -11,7 +11,11 @@ import Firebase
 class FeedController: UICollectionViewController {
     
     // MARK: - Internal Properties
-    var posts = [Post]()
+    var posts = [Post]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     var post: Post?
     
     // MARK: - Lifecycle
@@ -63,7 +67,18 @@ class FeedController: UICollectionViewController {
             
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
-            self.collectionView.reloadData()
+            self.checkIfUserDidLike()
+        }
+    }
+    
+    func checkIfUserDidLike() {
+        posts.forEach { post in
+            PostService.checkIfUserLiked(post: post) { isLiked in
+                if let index = self.posts.firstIndex(where: { $0.postId == post.postId }) {
+                    self.posts[index].isLiked = isLiked
+                }
+                    
+            }
         }
     }
 }
@@ -109,4 +124,18 @@ extension FeedController: FeedCellDelegate {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    func cell(_ cell: FeedCell, liked post: Post) {
+        cell.postViewModel?.post.isLiked.toggle()
+        if post.isLiked {
+            PostService.unlikePost(post: post) { error in
+                if let error = error { print("Error of unliking post is \(error.localizedDescription)")}
+                cell.postViewModel?.post.likes -= 1
+            }
+        }
+        else {
+            PostService.likePost(post: post) { error in
+                if let error = error { print("Error of liking post is \(error.localizedDescription)")}
+                cell.postViewModel?.post.likes += 1            }
+        }
+    }
 }

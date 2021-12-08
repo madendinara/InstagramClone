@@ -48,4 +48,36 @@ struct PostService {
             completion(posts)
         }
     }
+    
+    static func likePost(post: Post, completion: @escaping(Error?) -> Void) {
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        let data: [String: Any] = [:]
+        
+        Firestore.firestore().collection("posts").document(post.postId).updateData(["likes": post.likes + 1])
+        
+        Firestore.firestore().collection("posts").document(post.postId).collection("post-likes").document(userUid).setData(data) { error in
+            Firestore.firestore().collection("users").document(userUid).collection("likes").document(post.postId).setData(data, completion: completion)
+        }
+    }
+    
+    static func unlikePost(post: Post, completion: @escaping(Error?) -> Void) {
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        guard post.likes > 0 else { return }
+        Firestore.firestore().collection("posts").document(post.postId).updateData(["likes": post.likes - 1])
+        
+        Firestore.firestore().collection("posts").document(post.postId).collection("post-likes").document(userUid).delete { error in
+            Firestore.firestore().collection("users").document(userUid).collection("likes").document(post.postId).delete(completion: completion)
+        }
+        
+    }
+    
+    
+    static func checkIfUserLiked(post: Post, completion: @escaping(Bool) -> Void) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("users").document(currentUid).collection("likes").document(post.postId).getDocument { snapshot, error in
+            guard let didLiked = snapshot?.exists else { return }
+            completion(didLiked)
+        }
+    }
 }
