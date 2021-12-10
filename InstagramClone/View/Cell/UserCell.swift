@@ -29,14 +29,12 @@ class UserCell: UITableViewCell {
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.text = "Venom"
         return label
     }()
     private lazy var fulllnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = .lightGray
-        label.text = "Venom Venom"
         return label
     }()
     private lazy var labelsStackView: UIStackView = {
