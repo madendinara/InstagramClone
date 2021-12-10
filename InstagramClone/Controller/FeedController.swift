@@ -134,6 +134,9 @@ extension FeedController: FeedCellDelegate {
     
     func cell(_ cell: FeedCell, liked post: Post) {
         cell.postViewModel?.post.isLiked.toggle()
+        guard let tab = self.tabBarController as? MainTabController else { return }
+        guard let user = tab.user else { return }
+        
         if post.isLiked {
             PostService.unlikePost(post: post) { error in
                 if let error = error { print("Error of unliking post is \(error.localizedDescription)")}
@@ -144,11 +147,7 @@ extension FeedController: FeedCellDelegate {
             PostService.likePost(post: post) { error in
                 if let error = error { print("Error of liking post is \(error.localizedDescription)")}
                 cell.postViewModel?.post.likes += 1
-                NotificationsService.uploadNotification(post: post, uid: post.owner, type: .like) { error in
-                    if let error = error {
-                        print("Error of uploading notification is \(error.localizedDescription)")
-                    }
-                }
+                NotificationsService.uploadNotification(post: post, toUser: post.owner, fromUser: user, type: .like) { error in }
             }
         }
     }

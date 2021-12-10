@@ -14,6 +14,8 @@ struct Notification {
     var postImageUrl: String?
     var timestamp: Timestamp
     let type: NotificationType
+    let profileImageUrl: String
+    let profileUsername: String
     let id: String
     
     init(dictionary: [String: Any]) {
@@ -21,6 +23,8 @@ struct Notification {
         self.postImageUrl = dictionary["postImageUrl"] as? String ?? ""
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
         self.type = NotificationType(rawValue: dictionary["type"] as? Int ?? 0) ?? .like
+        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
+        self.profileUsername = dictionary["profileUsername"] as? String ?? ""
         self.id = dictionary["id"] as? String ?? ""
         self.postId = dictionary["postId"] as? String ?? ""
     }
@@ -35,7 +39,7 @@ enum NotificationType: Int {
         switch self {
         case .like: return " liked your post"
         case .comment: return " commented on your post"
-        case .follow: return " followed you"
+        case .follow: return " started following you"
         }
     }
 }

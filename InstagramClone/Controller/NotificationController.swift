@@ -10,6 +10,12 @@ import UIKit
 class NotificationController: UITableViewController {
     
     // MARK: - Properties
+    var notifications = [Notification]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +24,7 @@ class NotificationController: UITableViewController {
     
     // MARK: - Methods
     func configureView() {
+        getNotifications()
         tableView.register(NotificationCell.self, forCellReuseIdentifier: "NotificationCell")
         navigationItem.title = "Notifications"
         view.backgroundColor = .white
@@ -25,17 +32,24 @@ class NotificationController: UITableViewController {
         tableView.rowHeight = 80
         tableView.separatorStyle = .none
     }
+    
+    func getNotifications() {
+        NotificationsService.getNotifications { notifications in
+            self.notifications = notifications
+        }
+    }
 
 }
 
 // MARK: - UITableViewDelegate
 extension NotificationController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return notifications.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationCell
+        cell.viewModel = NotificationViewModel(notification: notifications[indexPath.row])
         return cell
     }
     

@@ -9,6 +9,13 @@ import UIKit
 
 class NotificationCell: UITableViewCell {
     
+    // MARK: - Internal properties
+    
+    var viewModel: NotificationViewModel? {
+        didSet {
+            configure()
+        }
+    }
     // MARK: - Properties
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -21,7 +28,6 @@ class NotificationCell: UITableViewCell {
     private lazy var infoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.text = "Venom"
         return label
     }()
     private lazy var postImageView: UIImageView = {
@@ -95,5 +101,12 @@ class NotificationCell: UITableViewCell {
     
     @objc func didTappedPostButton() {
         
+    }
+    
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        postImageView.sd_setImage(with: viewModel.postImageUrl)
+        infoLabel.attributedText = viewModel.notificationInfo
     }
 }
