@@ -11,6 +11,7 @@ import SnapKit
 protocol FeedCellDelegate: class {
     func cell(_ cell: FeedCell, wantsToShowCommentFor post: Post)
     func cell(_ cell: FeedCell, liked post: Post)
+    func cell(_ cell: FeedCell, goToProfileFor uid: String)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -31,12 +32,16 @@ class FeedCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 40 / 2
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(goToUsernameProfile))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tap)
         return imageView
     }()
     private lazy var usernameButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        button.addTarget(self, action: #selector(goToUsernameProfile), for: .touchUpInside)
         return button
     }()
     private lazy var postImage: UIImageView = {
@@ -181,5 +186,13 @@ class FeedCell: UICollectionViewCell {
         }
 
         delegate?.cell(self, liked: postViewModel.post)
+    }
+    
+    @objc func goToUsernameProfile() {
+        guard let postViewModel = postViewModel else {
+            return
+        }
+
+        delegate?.cell(self, goToProfileFor: postViewModel.post.owner)
     }
 }

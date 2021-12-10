@@ -9,7 +9,6 @@ import Firebase
 
 struct UserService {
     static func fetchUser(withUid uid: String, completion: @escaping(User) -> Void){
-        guard let uid = Auth.auth().currentUser?.uid else { return }
         Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
             
             guard let dic = snapshot?.data() else { return }
