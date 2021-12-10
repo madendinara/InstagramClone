@@ -56,6 +56,8 @@
 		9C91F29F276005A1004B745B /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F29E276005A1004B745B /* Comment.swift */; };
 		9C91F2A12761171B004B745B /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F2A02761171B004B745B /* CommentViewModel.swift */; };
 		9C91F2A52763C87F004B745B /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F2A42763C87F004B745B /* NotificationCell.swift */; };
+		9C91F2A72763CE23004B745B /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F2A62763CE23004B745B /* Notification.swift */; };
+		9C91F2A92763D130004B745B /* NotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C91F2A82763D130004B745B /* NotificationsService.swift */; };
 		9CABEF0627484C010022169D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0527484C010022169D /* LoginController.swift */; };
 		9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0727484C0E0022169D /* RegistrationController.swift */; };
 		9CABEF0B274866680022169D /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CABEF0A274866680022169D /* AuthTextField.swift */; };
@@ -134,6 +136,8 @@
 		9C91F29E276005A1004B745B /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		9C91F2A02761171B004B745B /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		9C91F2A42763C87F004B745B /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		9C91F2A62763CE23004B745B /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		9C91F2A82763D130004B745B /* NotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsService.swift; sourceTree = "<group>"; };
 		9CABEF0527484C010022169D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9CABEF0727484C0E0022169D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		9CABEF0A274866680022169D /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 				9C7346EB274C649100818E5B /* UserService.swift */,
 				9CFF7DDA275700B700B2C064 /* PostService.swift */,
 				9C91F29C2760059C004B745B /* CommentService.swift */,
+				9C91F2A82763D130004B745B /* NotificationsService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				9C7346EF274C679100818E5B /* User.swift */,
 				9C11772C275DA69500CAD2B3 /* Post.swift */,
 				9C91F29E276005A1004B745B /* Comment.swift */,
+				9C91F2A62763CE23004B745B /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 				9C91F297275EB3B0004B745B /* CommentCell.swift in Sources */,
 				9C7346E4274C339800818E5B /* ProfileCell.swift in Sources */,
 				9CFF7DD92755DF2200B2C064 /* InputTextView.swift in Sources */,
+				9C91F2A72763CE23004B745B /* Notification.swift in Sources */,
 				9CABEF0F274971340022169D /* AuthViewModel.swift in Sources */,
 				9C24DC3327459980001A6F97 /* SearchController.swift in Sources */,
 				9CFC988C274EDD6E00E20E22 /* UserCell.swift in Sources */,
@@ -632,6 +639,7 @@
 				9C7346E8274C342300818E5B /* ProfileHeader.swift in Sources */,
 				9CFF7DDB275700B700B2C064 /* PostService.swift in Sources */,
 				9C24DC402745C0A3001A6F97 /* Extensions.swift in Sources */,
+				9C91F2A92763D130004B745B /* NotificationsService.swift in Sources */,
 				9CABEF0827484C0E0022169D /* RegistrationController.swift in Sources */,
 				9C24DC2F27459646001A6F97 /* MainTabController.swift in Sources */,
 				9C24DC3727459996001A6F97 /* NotificationController.swift in Sources */,

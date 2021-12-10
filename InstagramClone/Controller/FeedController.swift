@@ -143,7 +143,13 @@ extension FeedController: FeedCellDelegate {
         else {
             PostService.likePost(post: post) { error in
                 if let error = error { print("Error of liking post is \(error.localizedDescription)")}
-                cell.postViewModel?.post.likes += 1            }
+                cell.postViewModel?.post.likes += 1
+                NotificationsService.uploadNotification(post: post, uid: post.owner, type: .like) { error in
+                    if let error = error {
+                        print("Error of uploading notification is \(error.localizedDescription)")
+                    }
+                }
+            }
         }
     }
 }
