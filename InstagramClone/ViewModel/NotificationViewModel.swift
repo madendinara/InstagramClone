@@ -20,6 +20,18 @@ struct NotificationViewModel {
     var postImageUrl: URL? {
         return URL(string: notification.postImageUrl ?? "")
     }
+    var followBackgroundButtonText: UIColor {
+        return UIColor.black
+    }
+    var followTextButtonColor: UIColor {
+        return UIColor.black
+    }
+    var followButtonHidden: Bool {
+        if self.notification.type == .follow {
+            return false
+        }
+        return true
+    }
     
     func attributedText() -> NSAttributedString {
         let attrText = NSMutableAttributedString(string: notification.profileUsername, attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])

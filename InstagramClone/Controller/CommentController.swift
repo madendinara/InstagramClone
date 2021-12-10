@@ -112,9 +112,11 @@ extension CommentController: CommentCellBottomViewDelegate {
     func view(_ view: CommentCellBottomView, wantsToPost comment: String) {
         
         guard let tab = tabBarController as? MainTabController else { return }
-        guard let user = tab.user else { return }
+        guard let currentUser = tab.user else { return }
+        
         self.showLoader(true)
-        CommentService.uploadComment(commentText: comment, postId: post.postId, user: user) { error in
+        CommentService.uploadComment(commentText: comment, postId: post.postId, user: currentUser) { error in
+            NotificationsService.uploadNotification(post: self.post, toUser: self.post.owner, fromUser: currentUser, type: .comment) { _ in }
             if let error = error {
                 print("Error of uploading comment is \(error.localizedDescription)")
             }

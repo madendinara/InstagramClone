@@ -28,6 +28,7 @@ class NotificationCell: UITableViewCell {
     private lazy var infoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.numberOfLines = 0
         return label
     }()
     private lazy var postImageView: UIImageView = {
@@ -43,7 +44,6 @@ class NotificationCell: UITableViewCell {
     }()
     private lazy var followButton: UIButton = {
         let button = UIButton(type: .system)
-        button.isHidden = true
         button.setHeight(30)
         button.addTarget(self, action: #selector(tappedFollowButton), for: .touchUpInside)
         button.setTitleColor(.black, for: .normal)
@@ -105,6 +105,10 @@ class NotificationCell: UITableViewCell {
     
     func configure() {
         guard let viewModel = viewModel else { return }
+        
+        followButton.isHidden = viewModel.followButtonHidden
+        postImageView.isHidden = !viewModel.followButtonHidden
+        
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
         postImageView.sd_setImage(with: viewModel.postImageUrl)
         infoLabel.attributedText = viewModel.notificationInfo
