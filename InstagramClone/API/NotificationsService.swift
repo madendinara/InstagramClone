@@ -34,7 +34,7 @@ struct NotificationsService {
     static func getNotifications(completion: @escaping([Notification]) -> Void) {
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
-        Firestore.firestore().collection("notifications").document(userUid).collection("user-notifications").getDocuments { snapshot, error in
+        Firestore.firestore().collection("notifications").document(userUid).collection("user-notifications").order(by: "type", descending: true).getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }
             
             let notifications = documents.map {( Notification(dictionary: $0.data()))}

@@ -34,8 +34,8 @@ struct PostService {
         }
     }
     
-    static func getPosts(_ ownerUid: String, completion: @escaping([Post]) -> Void) {
-        let query = Firestore.firestore().collection("posts").whereField("owner", isEqualTo: ownerUid)
+    static func getPosts(_ uid: String, completion: @escaping([Post]) -> Void) {
+        let query = Firestore.firestore().collection("posts").whereField("owner", isEqualTo: uid)
         
         query.getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }
@@ -78,6 +78,16 @@ struct PostService {
         Firestore.firestore().collection("users").document(currentUid).collection("likes").document(post.postId).getDocument { snapshot, error in
             guard let didLiked = snapshot?.exists else { return }
             completion(didLiked)
+        }
+    }
+    
+    static func getPost(forPost postId: String, completion: @escaping(Post) -> Void){
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("posts").document(postId).getDocument { snapshot, error in
+            guard let data = snapshot?.data() else { return }
+            let post = Post(postId: postId, dictionary: data)
+            completion(post)
         }
     }
 }

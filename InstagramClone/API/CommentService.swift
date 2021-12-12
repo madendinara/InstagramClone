@@ -11,7 +11,7 @@ import Firebase
 struct CommentService {
     
     static func uploadComment(commentText: String, postId:  String, user: User, completion: @escaping(Error?) -> Void) {
-        let data: [String: Any] = ["ownerUid" : user.uid,
+        let data: [String: Any] = ["uid" : user.uid,
                                    "commentText": commentText,
                                    "timestamp": Timestamp(date: Date()),
                                    "ownerUsername": user.username,

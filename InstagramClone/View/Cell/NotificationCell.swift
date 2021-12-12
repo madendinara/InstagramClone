@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol NotificationCellDelegate: class {
+    func cell(_ cell: NotificationCell, wantsToFollow userUid: String)
+    func cell(_ cell: NotificationCell, wantsToOpen postId: String)
+    func cell(_ cell: NotificationCell, wantsToUnfollow userUid: String)
+}
+
 class NotificationCell: UITableViewCell {
     
     // MARK: - Internal properties
-    
+    weak var delegate: NotificationCellDelegate?
     var viewModel: NotificationViewModel? {
         didSet {
             configure()
@@ -68,7 +74,7 @@ class NotificationCell: UITableViewCell {
     
     // MARK: - Methods
     func configureView() {
-        [profileImageView, infoLabel, postImageView, followButton].forEach { addSubview($0)}
+        [profileImageView, infoLabel, postImageView, followButton].forEach { contentView.addSubview($0)}
         selectionStyle = .none
         makeConstraints()
     }
@@ -96,11 +102,13 @@ class NotificationCell: UITableViewCell {
     }
     
     @objc func tappedFollowButton() {
-        
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, wantsToFollow: viewModel.notification.uid)
     }
     
     @objc func didTappedPostButton() {
-        
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, wantsToOpen: viewModel.notification.postId ?? "")
     }
     
     func configure() {
@@ -112,5 +120,9 @@ class NotificationCell: UITableViewCell {
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
         postImageView.sd_setImage(with: viewModel.postImageUrl)
         infoLabel.attributedText = viewModel.notificationInfo
+        
+        followButton.setTitle(viewModel.followButtonText, for: .normal)
+        followButton.backgroundColor = viewModel.followButtonBackgroundColor
+        followButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
     }
 }

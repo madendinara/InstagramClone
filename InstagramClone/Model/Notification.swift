@@ -9,23 +9,22 @@ import UIKit
 import Firebase
 
 struct Notification {
-    let ownerUid: String
+    let uid: String
     var postId: String?
     var postImageUrl: String?
     var timestamp: Timestamp
     let type: NotificationType
     let profileImageUrl: String
     let profileUsername: String
-    let id: String
+    var isFollowed: Bool = false
     
     init(dictionary: [String: Any]) {
-        self.ownerUid = dictionary["ownerUid"] as? String ?? ""
+        self.uid = dictionary["uid"] as? String ?? ""
         self.postImageUrl = dictionary["postImageUrl"] as? String ?? ""
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
         self.type = NotificationType(rawValue: dictionary["type"] as? Int ?? 0) ?? .like
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.profileUsername = dictionary["profileUsername"] as? String ?? ""
-        self.id = dictionary["id"] as? String ?? ""
         self.postId = dictionary["postId"] as? String ?? ""
     }
 }

@@ -20,11 +20,14 @@ struct NotificationViewModel {
     var postImageUrl: URL? {
         return URL(string: notification.postImageUrl ?? "")
     }
-    var followBackgroundButtonText: UIColor {
-        return UIColor.black
+    var followButtonBackgroundColor: UIColor {
+        return notification.isFollowed ? .white : .systemBlue
     }
-    var followTextButtonColor: UIColor {
-        return UIColor.black
+    var followButtonTextColor: UIColor {
+        return notification.isFollowed ? .black : .white
+    }
+    var followButtonText: String {
+        return notification.isFollowed ? "Following" : "Follow"
     }
     var followButtonHidden: Bool {
         if self.notification.type == .follow {
