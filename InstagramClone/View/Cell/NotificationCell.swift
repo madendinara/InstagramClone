@@ -74,7 +74,8 @@ class NotificationCell: UITableViewCell {
     
     // MARK: - Methods
     func configureView() {
-        [profileImageView, infoLabel, postImageView, followButton].forEach { contentView.addSubview($0)}
+        [infoLabel, postImageView, followButton].forEach { contentView.addSubview($0)}
+        addSubview(profileImageView)
         selectionStyle = .none
         makeConstraints()
     }
@@ -103,7 +104,13 @@ class NotificationCell: UITableViewCell {
     
     @objc func tappedFollowButton() {
         guard let viewModel = viewModel else { return }
-        delegate?.cell(self, wantsToFollow: viewModel.notification.uid)
+        
+        if viewModel.notification.isFollowed {
+            delegate?.cell(self, wantsToUnfollow: viewModel.notification.uid)
+        }
+        else {
+            delegate?.cell(self, wantsToFollow: viewModel.notification.uid)
+        }
     }
     
     @objc func didTappedPostButton() {

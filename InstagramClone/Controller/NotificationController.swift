@@ -56,7 +56,7 @@ class NotificationController: UITableViewController {
     
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension NotificationController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notifications.count
@@ -69,11 +69,24 @@ extension NotificationController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let uid = notifications[indexPath.row].uid
+        
+        UserService.fetchUser(withUid: uid) { user in
+            let controller = ProfileController(user: user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
 }
 
 extension NotificationController: NotificationCellDelegate {
     func cell(_ cell: NotificationCell, wantsToFollow userUid: String) {
-        
+        UserService.follow(uid: userUid) { _ in
+            cell.viewModel?.notification.isFollowed.toggle()
+            self.getNotifications()
+            self.tableView.reloadData()
+        }
     }
     
     func cell(_ cell: NotificationCell, wantsToOpen postId: String) {
@@ -82,11 +95,16 @@ extension NotificationController: NotificationCellDelegate {
             controller.post = post
             self.navigationController?.pushViewController(controller, animated: true)
         }
-
+        
     }
     
     func cell(_ cell: NotificationCell, wantsToUnfollow userUid: String) {
+        UserService.unfollow(uid: userUid) { _ in
+            cell.viewModel?.notification.isFollowed.toggle()
+            self.getNotifications()
+            self.tableView.reloadData()
+        }
+        
     }
-    
     
 }
