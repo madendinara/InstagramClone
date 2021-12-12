@@ -31,6 +31,10 @@ class NotificationController: UITableViewController {
         
         tableView.rowHeight = 80
         tableView.separatorStyle = .none
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(refreshNotifications), for: .valueChanged)
+        tableView.refreshControl = refresher
     }
     
     func getNotifications() {
@@ -54,6 +58,12 @@ class NotificationController: UITableViewController {
         }
     }
     
+    @objc func refreshNotifications(){
+        notifications.removeAll()
+        getNotifications()
+        self.tableView.refreshControl?.endRefreshing()
+    }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -70,11 +80,13 @@ extension NotificationController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showLoader(true)
         let uid = notifications[indexPath.row].uid
         
         UserService.fetchUser(withUid: uid) { user in
             let controller = ProfileController(user: user)
             self.navigationController?.pushViewController(controller, animated: true)
+            self.showLoader(false)
         }
     }
     
@@ -82,7 +94,9 @@ extension NotificationController {
 
 extension NotificationController: NotificationCellDelegate {
     func cell(_ cell: NotificationCell, wantsToFollow userUid: String) {
+        showLoader(true)
         UserService.follow(uid: userUid) { _ in
+            self.showLoader(false)
             cell.viewModel?.notification.isFollowed.toggle()
             self.getNotifications()
             self.tableView.reloadData()
@@ -90,16 +104,20 @@ extension NotificationController: NotificationCellDelegate {
     }
     
     func cell(_ cell: NotificationCell, wantsToOpen postId: String) {
+        showLoader(true)
         PostService.getPost(forPost: postId) { post in
             let controller = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
             controller.post = post
             self.navigationController?.pushViewController(controller, animated: true)
+            self.showLoader(false)
         }
         
     }
     
     func cell(_ cell: NotificationCell, wantsToUnfollow userUid: String) {
+        showLoader(true)
         UserService.unfollow(uid: userUid) { _ in
+            self.showLoader(false)
             cell.viewModel?.notification.isFollowed.toggle()
             self.getNotifications()
             self.tableView.reloadData()

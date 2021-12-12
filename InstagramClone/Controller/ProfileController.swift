@@ -62,7 +62,6 @@ class ProfileController: UICollectionViewController {
     func getPosts() {
         PostService.getPosts(user.uid) { posts in
             self.posts = posts
-            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
@@ -70,6 +69,9 @@ class ProfileController: UICollectionViewController {
     @objc func refreshValue() {
         posts.removeAll()
         getPosts()
+        getUserStats()
+        checkIfUserIsFollowed()
+        self.collectionView.refreshControl?.endRefreshing()
     }
     
 }

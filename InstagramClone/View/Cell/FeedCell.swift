@@ -167,10 +167,10 @@ class FeedCell: UICollectionViewCell {
             make.top.equalTo(buttonsStackView.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(8)
         }
-        saveButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(8)
-            make.centerY.equalTo(shareButton)
-        }
+//        saveButton.snp.makeConstraints { make in
+//            make.trailing.equalToSuperview().inset(8)
+//            make.centerY.equalTo(shareButton)
+//        }
         captionLabel.snp.makeConstraints { make in
             make.top.equalTo(likeLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(8)
