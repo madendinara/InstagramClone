@@ -13,4 +13,4 @@ Features that included:
 12. Going to post or profile from notifications screen
 13. Logging in and logging out 
 14. Fetching post's all the likes/comments from Firebase
-
+15. Reset password
