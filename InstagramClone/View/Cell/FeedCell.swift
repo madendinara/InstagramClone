@@ -91,6 +91,7 @@ class FeedCell: UICollectionViewCell {
     private lazy var postTimeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
+        label.text = "2 min ago"
         label.textColor = .systemGray
         return label
     }()
@@ -126,9 +127,6 @@ class FeedCell: UICollectionViewCell {
         captionLabel.text = viewModel.caption
         postImage.sd_setImage(with: viewModel.imageUrl)
         likeLabel.text = viewModel.likesText
-        
-        // Fix this line
-        postTimeLabel.text = "\(viewModel.timestamp.seconds)"
         
         likeButton.setImage(viewModel.likeImage, for: .normal)
         profileImageView.sd_setImage(with: viewModel.ownerUserImageUrl)

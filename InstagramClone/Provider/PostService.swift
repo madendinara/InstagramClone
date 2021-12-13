@@ -21,7 +21,11 @@ struct PostService {
                                        "owner": uid,
                                        "ownerUserImageUrl": currentUser.profileImageUrl,
                                        "ownerUsername": currentUser.username]
-            Firestore.firestore().collection("posts").addDocument(data: data, completion: completion)
+            
+            let docId = Firestore.firestore().collection("posts").addDocument(data: data, completion: completion).documentID
+
+            
+            updateFeedAfterPosting(postId: docId)
         }
     }
     
@@ -102,7 +106,7 @@ struct PostService {
             
             documentIds.forEach { documentId in
                 if followed {
-                    Firestore.firestore().collection("users").document(currentUid).collection("user-feed").document(documentId).setData([:])
+                    Firestore.firestore().collection("users").document(currentUid).collection("user-feed").document(documentId).setData(["timestamp":Timestamp(date: Date())])
                 }
                 else {
                     Firestore.firestore().collection("users").document(currentUid).collection("user-feed").document(documentId).delete { error in }
@@ -114,7 +118,7 @@ struct PostService {
     static func getPostsForFeed(completion: @escaping([Post]) -> Void) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         var posts = [Post]()
-        Firestore.firestore().collection("users").document(currentUid).collection("user-feed").getDocuments { snapshot, error in
+        Firestore.firestore().collection("users").document(currentUid).collection("user-feed").order(by: "timestamp", descending: false).getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }
             
             documents.forEach { document in
@@ -123,6 +127,20 @@ struct PostService {
                     completion(posts)
                 }
             }
+        }
+    }
+    
+    static func updateFeedAfterPosting(postId: String) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("followers").document(currentUid).collection("user-followers").getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else { return }
+            
+            documents.forEach { document in
+                Firestore.firestore().collection("users").document(document.documentID).collection("user-feed").document(postId).setData(["timestamp":Timestamp(date: Date())])
+            }
+            
+            Firestore.firestore().collection("users").document(currentUid).collection("user-feed").document(postId).setData(["timestamp":Timestamp(date: Date())])
         }
     }
     
