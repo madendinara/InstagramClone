@@ -212,7 +212,7 @@
 				9C24DC2B27459388001A6F97 /* View */,
 				9C24DC2A27459386001A6F97 /* ViewModel */,
 				9C24DC2927459383001A6F97 /* Controller */,
-				9C24DC282745936E001A6F97 /* API */,
+				9C24DC282745936E001A6F97 /* Provider */,
 				9C24DC2D274593BA001A6F97 /* Utils */,
 				9C24DBF527459081001A6F97 /* AppDelegate.swift */,
 				9C24DBF727459081001A6F97 /* SceneDelegate.swift */,
@@ -244,7 +244,7 @@
 			path = InstagramCloneUITests;
 			sourceTree = "<group>";
 		};
-		9C24DC282745936E001A6F97 /* API */ = {
+		9C24DC282745936E001A6F97 /* Provider */ = {
 			isa = PBXGroup;
 			children = (
 				9CD167A0274AF98F0057D3D3 /* ImageUploader.swift */,
@@ -254,7 +254,7 @@
 				9C91F29C2760059C004B745B /* CommentService.swift */,
 				9C91F2A82763D130004B745B /* NotificationsService.swift */,
 			);
-			path = API;
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		9C24DC2927459383001A6F97 /* Controller */ = {
