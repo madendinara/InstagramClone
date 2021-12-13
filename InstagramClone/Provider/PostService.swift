@@ -90,4 +90,40 @@ struct PostService {
             completion(post)
         }
     }
+    
+    static func updateFeedAfterFollowing(user: User, followed: Bool) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        let query = Firestore.firestore().collection("posts").whereField("owner", isEqualTo: user.uid)
+        
+        query.getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else { return }
+            let documentIds = documents.map( { $0.documentID })
+            
+            documentIds.forEach { documentId in
+                if followed {
+                    Firestore.firestore().collection("users").document(currentUid).collection("user-feed").document(documentId).setData([:])
+                }
+                else {
+                    Firestore.firestore().collection("users").document(currentUid).collection("user-feed").document(documentId).delete { error in }
+                }
+            }
+        }
+    }
+    
+    static func getPostsForFeed(completion: @escaping([Post]) -> Void) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        var posts = [Post]()
+        Firestore.firestore().collection("users").document(currentUid).collection("user-feed").getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else { return }
+            
+            documents.forEach { document in
+                getPost(forPost: document.documentID) { post in
+                    posts.append(post)
+                    completion(posts)
+                }
+            }
+        }
+    }
+    
 }

@@ -24,6 +24,7 @@ class FeedController: UICollectionViewController {
         super.viewDidLoad()
         configureViews()
         getPosts()
+        
     }
     
     // MARK: - Methods
@@ -62,13 +63,16 @@ class FeedController: UICollectionViewController {
     }
     
     func getPosts() {
-        PostService.getPosts { posts in
+        PostService.getPostsForFeed { posts in
             guard self.post == nil else { return }
             
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
             self.checkIfUserDidLike()
         }
+//        PostService.getPosts { posts in
+//
+//        }
     }
     
     func checkIfUserDidLike() {

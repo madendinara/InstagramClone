@@ -34,7 +34,7 @@ class ProfileController: UICollectionViewController {
     
     // MARK: - Methods
     func configureCollectionView(){
-    
+        
         navigationItem.title = user.username
         collectionView.backgroundColor = .white
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: "ProfileCell")
@@ -142,6 +142,9 @@ extension ProfileController: ProfileHeaderDelegate {
             UserService.unfollow(uid: user.uid) { error in
                 self.user.isFollowed = false
                 self.getUserStats()
+                
+                PostService.updateFeedAfterFollowing(user: user, followed: false)
+                
                 self.collectionView.reloadData()
             }
         } else {
@@ -149,6 +152,9 @@ extension ProfileController: ProfileHeaderDelegate {
                 self.user.isFollowed = true
                 self.getUserStats()
                 NotificationsService.uploadNotification(toUser: user.uid, fromUser: currentUser, type: .follow) { _ in }
+                
+                PostService.updateFeedAfterFollowing(user: user, followed: true)
+                
                 self.collectionView.reloadData()
             }
         }
