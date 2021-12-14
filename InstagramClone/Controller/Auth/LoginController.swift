@@ -51,6 +51,7 @@ class LoginController: UIViewController {
     }()
     private lazy var forgetPasswordButton: AuthButton = {
         let button = AuthButton(regularText: "Forgot your password?  ", boldText: "Get help signing in")
+        button.addTarget(self, action: #selector(tappedForgetPassword), for: .touchUpInside)
         return button
     }()
     private lazy var dontHaveAccountButton: AuthButton = {
@@ -107,6 +108,11 @@ class LoginController: UIViewController {
             make.bottom.equalToSuperview().inset(32)
             make.centerX.equalToSuperview()
         }
+    }
+    
+    @objc func tappedForgetPassword() {
+        let controller = ResetPasswordController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func configureNotification() {
