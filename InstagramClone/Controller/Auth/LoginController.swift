@@ -113,6 +113,8 @@ class LoginController: UIViewController {
     @objc func tappedForgetPassword() {
         let controller = ResetPasswordController()
         controller.delegate = self
+        guard let emailText = emailTextField.text else { return }
+        controller.email = emailText
         navigationController?.pushViewController(controller, animated: true)
     }
     

@@ -16,6 +16,7 @@ class ResetPasswordController: UIViewController {
     // MARK: - Interal properties
     var viewModel = ResetPasswordViewModel()
     weak var delegate: ResetPasswordControllerDelegate?
+    var email: String?
     
     // MARK: - Properties
     private lazy var iconImage: UIImageView = {
@@ -69,6 +70,13 @@ class ResetPasswordController: UIViewController {
     // MARK: - Methods
     func configureView() {
         configureGradienLayer()
+        
+        if let email = email {
+            emailTextField.text = email
+            viewModel.email = email
+            updateForm()
+        }
+        
         [backButton, iconImage, inputStackView].forEach { view.addSubview($0)}
         makeConstraints()
     }
