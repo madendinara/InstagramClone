@@ -29,6 +29,13 @@ struct NotificationViewModel {
     var followButtonText: String {
         return notification.isFollowed ? "Following" : "Follow"
     }
+    var timestampString: String? {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.second, .minute, .hour, .day, .weekOfMonth]
+        formatter.maximumUnitCount = 1
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: notification.timestamp.dateValue(), to: Date())
+    }
     var followButtonHidden: Bool {
         if self.notification.type == .follow {
             return false
@@ -39,6 +46,7 @@ struct NotificationViewModel {
     func attributedText() -> NSAttributedString {
         let attrText = NSMutableAttributedString(string: notification.profileUsername, attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
         attrText.append(NSAttributedString(string: notification.type.notificationMessage, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.black]))
+        attrText.append(NSAttributedString(string: " \(timestampString ?? "")", attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
         return attrText
     }
     

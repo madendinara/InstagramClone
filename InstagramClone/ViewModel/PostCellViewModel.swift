@@ -23,8 +23,12 @@ struct PostCellViewModel {
     var caption: String {
         return post.caption
     }
-    var timestamp: Timestamp {
-        return post.timestamp
+    var timestamp: String? {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.second, .minute, .hour, .day, .weekOfMonth]
+        formatter.maximumUnitCount = 1
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: post.timestamp.dateValue(), to: Date())
     }
     var likeImage: UIImage? {
         let imageName = post.isLiked ? "like_selected" : "like_unselected"
