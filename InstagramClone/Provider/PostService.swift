@@ -46,9 +46,8 @@ struct PostService {
             
             var posts = documents.map({ Post(postId: $0.documentID, dictionary: $0.data())})
             
-            posts.sort { post1, post2 in
-                return post1.timestamp.seconds > post2.timestamp.seconds
-            }
+            posts.sort(by: { $0.timestamp.seconds > $1.timestamp.seconds })
+
             completion(posts)
         }
     }
@@ -118,12 +117,15 @@ struct PostService {
     static func getPostsForFeed(completion: @escaping([Post]) -> Void) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         var posts = [Post]()
-        Firestore.firestore().collection("users").document(currentUid).collection("user-feed").order(by: "timestamp", descending: false).getDocuments { snapshot, error in
+        Firestore.firestore().collection("users").document(currentUid).collection("user-feed").getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }
             
             documents.forEach { document in
                 getPost(forPost: document.documentID) { post in
                     posts.append(post)
+                    
+                    posts.sort(by: { $0.timestamp.seconds > $1.timestamp.seconds })
+                    
                     completion(posts)
                 }
             }
