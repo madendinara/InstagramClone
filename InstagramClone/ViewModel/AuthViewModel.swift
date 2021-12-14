@@ -44,3 +44,16 @@ struct RegistrationViewModel: AuthViewModelProtocol {
         return formIsValid ? 1 : 0.5
     }
 }
+
+struct ResetPasswordViewModel: AuthViewModelProtocol {
+    var email: String?
+    
+    var formIsValid: Bool {
+        return email?.isEmpty == false
+    }
+    
+    var buttonBackgroundAlpha: Double {
+        return formIsValid ? 1 : 0.5
+    }
+    
+}

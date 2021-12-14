@@ -112,6 +112,7 @@ class LoginController: UIViewController {
     
     @objc func tappedForgetPassword() {
         let controller = ResetPasswordController()
+        controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -136,9 +137,7 @@ class LoginController: UIViewController {
         AuthService.loginUser(email: email, password: password) { result, error in
             if let error = error {
                 
-                let alert = UIAlertController(title: "Error", message: "There is no user record.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                self.present(alert, animated: true)
+                self.showAlert(with: "Error", message: "There is no user record.")
                 
                 print("Error of login is \(error.localizedDescription)")
                 
@@ -157,3 +156,11 @@ extension LoginController: FormViewModelProtocol {
     
 }
 
+// MARK: - ResetPasswordControllerDelegate
+extension LoginController: ResetPasswordControllerDelegate {
+    func controllerDidSendResetPasswordLink(_ controller: ResetPasswordController) {
+        navigationController?.popViewController(animated: true)
+        showAlert(with: "Success", message: "We sent a link to your email to reset your password")
+    }
+
+}
