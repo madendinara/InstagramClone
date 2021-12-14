@@ -14,3 +14,4 @@ Features that included:
 13. Logging in and logging out 
 14. Fetching post's all the likes/comments from Firebase
 15. Reset password
+16. Explore page on the second tab
