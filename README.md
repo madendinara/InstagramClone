@@ -2,6 +2,10 @@
 <h2>Description</h2>
 I've built this app for learning purposes. That's a complete version of Instagram Clone ready to be published. It includes all the core component of a social network. And this app was created fully programmatically, without using of storyboard.
 
+<h2>Architecture</h2>
+MVVM - Model View ViewModel
+
+
 <h2>Features that included:</h2>
 <ul>
   <li>Signing Up</li>
