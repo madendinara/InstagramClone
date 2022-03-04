@@ -1,4 +1,4 @@
-<b>Features that included:</b>
+<h1>Features that included:</h1>
 1. Signing Up
 2. Creating a user profile
 3. Authenticate users with Firebase
