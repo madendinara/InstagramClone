@@ -2,24 +2,24 @@
 <ul>
   <li>Signing Up</li>
   <li>Creating a user profile</li>
-  <li>Milk</li>
+  <li>Authenticate users with Firebase</li>
+  
+  <li>Searching for users</li>
+  <li>Upload posts with caption, image</li>
+  <li>Home feed with posts from following</li>
+  
+  <li>Liking posts</li>
+  <li>Commenting posts </li>
+  <li>Notifications page with following, commenting, liking posts</li>
+  
+  <li>Follow/Unfollow users from profile</li>
+  <li>Going to post or profile from notifications screen</li>
+  <li>Logging in and logging out</li>
+  
+    <li>Fetching post's all the likes/comments from Firebase</li>
+  <li>Reset password</li>
+  <li>Explore page on the second tab</li>
+  
+  
 </ul>
 
-
-
-
-2. 
-3. Authenticate users with Firebase
-4. Searching for users
-5. Upload posts with caption, image
-6. Home feed with posts from following
-7. Liking posts
-8. Commenting on posts 
-9. Notifications page with following, commenting, liking posts
-10. Follow/Unfollow users from profile
-11. Follow/Unfollow user from notifications screen
-12. Going to post or profile from notifications screen
-13. Logging in and logging out 
-14. Fetching post's all the likes/comments from Firebase
-15. Reset password
-16. Explore page on the second tab
