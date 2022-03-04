@@ -5,6 +5,8 @@ I've built this app for learning purposes. That's a complete version of Instagra
 <h2>Architecture</h2>
 MVVM - Model View ViewModel
 
+<h2>Database</h2>
+I've been using free Firebase Store to store all the pictures, login, password, posts description, notifications.
 
 <h2>Features that included:</h2>
 <ul>
