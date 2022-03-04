@@ -31,6 +31,19 @@ I've been using free Firebase Store to store all the pictures, login, password, 
   <li>Explore page on the second tab</li>
 </ul>
 
+<h2>Frameworks used in this project </h2>
+<ul>
+  <li>SnapKit</li>
+  <li>Firebase/Auth</li>
+  <li>Firebase/Firestore</li>
+  <li>Firebase/Analytics</li>
+  <li>Firebase/Storage</li>
+  <li>SDWebImage</li>
+  <li>YPImagePicker</li>
+  <li>JGProgressHUD</li>
+
+</ul>
+
 <h2>Developed with a passion by</h2>
 Dinara Zimanova
 <a href="http://linkedin.com/in/madendinara/">Linkedin(Dinara Z.)</a>
