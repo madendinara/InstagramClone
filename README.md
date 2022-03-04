@@ -16,7 +16,7 @@
   <li>Going to post or profile from notifications screen</li>
   <li>Logging in and logging out</li>
   
-    <li>Fetching post's all the likes/comments from Firebase</li>
+  <li>Fetching post's all the likes/comments from Firebase</li>
   <li>Reset password</li>
   <li>Explore page on the second tab</li>
   
