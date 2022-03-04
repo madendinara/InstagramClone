@@ -1,6 +1,8 @@
 <h1>Instagram App Clone</h1>
+<h2>Description</h2>
+I've built this app for learning purposes. That's a complete version of Instagram Clone ready to be published. 
 
-<h3>Features that included:</h3>
+<h2>Features that included:</h2>
 <ul>
   <li>Signing Up</li>
   <li>Creating a user profile</li>
