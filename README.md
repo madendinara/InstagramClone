@@ -44,6 +44,15 @@ I've been using free Firebase Store to store all the pictures, login, password, 
 
 </ul>
 
+<h2>Signing up/in/forgot password screens</h2>
+
+<p align=”center”>
+<img src="https://user-images.githubusercontent.com/22132871/156779043-db452e8e-5229-41e7-8f9c-a6442c990f7f.png" height="700">
+<img src="https://user-images.githubusercontent.com/22132871/156779094-aba84e95-7ba4-4de6-873d-86c6d1a77b27.png"  height="700">
+<img src="https://user-images.githubusercontent.com/22132871/156779161-c1b4371b-2caf-47cf-9ded-2a82a34df9d0.png"  height="700">
+
+</p>
+
 <h2>Developed with a passion by</h2>
 Dinara Zimanova
 <a href="http://linkedin.com/in/madendinara/">Linkedin(Dinara Z.)</a>
