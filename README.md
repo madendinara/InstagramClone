@@ -1,6 +1,14 @@
-<h1>Features that included:</h1>
-1. Signing Up
-2. Creating a user profile
+<h3>Features that included:</h3>
+<ul>
+  <li>Signing Up</li>
+  <li>Creating a user profile</li>
+  <li>Milk</li>
+</ul>
+
+
+
+
+2. 
 3. Authenticate users with Firebase
 4. Searching for users
 5. Upload posts with caption, image
