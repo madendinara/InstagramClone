@@ -1,4 +1,4 @@
-<h1 align="center">Instagram App Clone</h1>
+<h1>Instagram App Clone</h1>
 
 <h3>Features that included:</h3>
 <ul>
