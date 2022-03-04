@@ -33,4 +33,4 @@ I've been using free Firebase Store to store all the pictures, login, password, 
 
 <h2>Developed with passion by</h2>
 Dinara Zimanova
-<a href=”http://linkedin.com/in/madendinara/”>
+<a href=”http://linkedin.com/in/madendinara/”>Linkedin(Dinara Z.)</a>
